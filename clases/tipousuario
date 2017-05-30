@@ -1,0 +1,39 @@
+<?php
+
+class tipousuario extends persona
+{
+
+	private $idadministrador;
+	private $grado;
+
+
+	function __construct($a='')
+    {
+    	$this->grado= $a;
+
+    }
+
+    //Métodos SET
+
+    public function setgrado($a)
+    {
+      $this->grado= $a;
+    }
+
+
+
+    //Método GET
+
+     public function getgrado()
+    {
+      return $this->grado;
+    }
+
+
+
+
+}
+
+
+
+?>

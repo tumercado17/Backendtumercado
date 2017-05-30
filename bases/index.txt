@@ -1,0 +1,26 @@
+insert into persona (ci,nombre,apellido,email,pais,contrasena,calle,numero,tarjeta,calificacion) 
+values (52185428,"ignacio","gallardo","email","pais","contra","calle",4345,1223423,"calificacion");
+
+insert into telefonopersona (cipersona,telefono) values (52185428,23091329);
+insert into administrador (idadministrador,ciadministrador,grado) values (1,52185428,"tecnico coso");
+insert into usuario (idusuario,ciusuario,fecha,precio) values (1,52185428,CURDATE,100);
+insert into nombreusuario (idusuario,nombreusu) values (1,"GRATIS");
+
+insert into publicacion (id,cipersona,nombrepubli,precio,descripcion,categoria,stock,fecha,tipo) values (1,52185428,"Cajones lindos",100,"publicacion muestra 1","Hogar",1,CURDATE,"permuta");
+
+insert into permuta (idpublicacion,calificacion,fecha) values (1,"no califica",CURDATE);
+
+////////////////////
+
+insert into persona (ci,nombre,apellido,email,pais,contrasena,calle,numero,tarjeta,calificacion) 
+values (52212360,"matias","gallardo","matiasgallardo@gmail.com","Uruguay","matias","calera de las huerfas",4345,999999,"Mal vendedor");
+
+insert into telefonopersona (cipersona,telefono) values (52212360,094697192);
+
+insert into usuario (idusuario,ciusuario,fecha,precio) values (2,52212360,"2017-05-28",100);
+
+insert into nombreusuario (idusuario,nombreusu) values (2,"PREMIUM 3");
+
+insert into publicacion (id,cipersona,nombrepubli,precio,descripcion,categoria,stock,fecha,tipo) values (2,52212360,"Vendo todo soy pobre",3400,"Es todo lo que vendo porque soy pobre y necesito fasito coso","Varios",23,"2017-05-29","Permuta");
+
+insert into permuta (idpublicacion,calificacion,fecha) values (2,"no calificada aun","2017-05-29");
