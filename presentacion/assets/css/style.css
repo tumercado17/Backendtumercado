@@ -7,7 +7,7 @@
 
     100% To use For Personal And Commercial Use.
     IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
+
     ========================================================  */
 
 
@@ -18,7 +18,7 @@
 body {
           font-family:'Open Sans', sans-serif;
     font-size:14px;
-   
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -28,6 +28,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-center {
     text-align:center;
+}
+
+.boxFooter {
+    position: absolute;
+    top: 94%;
+    left: 1%;
+    width: 98%;
+    height: 5%;
+    text-align:right;
 }
 
 h2 {
@@ -80,9 +89,9 @@ font-size: 18px;
     margin-top:40px;
 }
 
-#home-sec { 
-  
-    
+#home-sec {
+
+
 background: url(../img/1.jpg) no-repeat 50% 50%;
 background-attachment: fixed;
 -webkit-background-size: cover;
@@ -103,7 +112,7 @@ height: auto;
     border:5px outset  #fff;
     padding:15px;
     text-transform:uppercase;
-    
+
 }
 
 .head-last {
@@ -117,7 +126,7 @@ height: auto;
 
 
 /* ===========================================================
-   NAVBAR CHANGES   
+   NAVBAR CHANGES
    ============================================================*/
 .navbar {
 	font-size: 18px;
@@ -142,7 +151,7 @@ padding-top: 5px;
 	letter-spacing: 2px;
 }
 .navbar-inverse :hover .navbar-brand:hover {
-	color: #000;	
+	color: #000;
 }
 .navbar-inverse .navbar-nav > li > a {
 color: #000;
@@ -189,7 +198,7 @@ color: #000;
   background: #fff;
   padding: 10px;
   border:1px solid #E8EAEE;
-  
+
 }
 .portfolio-item img {
   width: 100%;
@@ -256,32 +265,16 @@ border-top: 1px solid #d6d6d6;
 
 /*=======================================
     MEDIA QUERIES
-    
+
     ==================================================*/
 
 @media all and (max-width:640px) and (min-width:381px) {
-    .head-main { 
+    .head-main {
         font-size:28px ;
     }
 }
 @media all and (max-width:381px) and (min-width:200px) {
-    .head-main { 
+    .head-main {
         font-size:24px ;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

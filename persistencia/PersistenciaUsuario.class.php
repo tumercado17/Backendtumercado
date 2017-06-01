@@ -6,10 +6,10 @@
 			$password = $obj->getPassword();
 
 			//CONSULTA SQL
-			$sql = "INSERT INTO usuario (login,password) VALUES (:login,:password)";
+			$sql = "insert into usuario (login,password) values (:login,:password)";
 			//VARIABLES PARA SQL "PREPARE" ES UNA FUNCION PDO, ES UNA FUNCION DEFINIDA
 			$result = $conex->prepare(sql);
-			$result->execute(array(":login"->$login,":password"->$password));
+			$result->execute(array(":login"=>$login,":password"=>$password));
 
 			if($result){
 				return true;

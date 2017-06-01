@@ -1,3 +1,7 @@
+<?php
+require_once("../logica/sesiones.php");
+Require_once('../presentacion/menu.php');
+?>
 ﻿<!DOCTYPE html>
 
 <html lang="en">
@@ -18,37 +22,6 @@
 </head>
 
 <body>
-     <!-- NAV SECTION -->
-         <div class="navbar navbar-inverse navbar-fixed-top">
-
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.php">TUMERCADO</a>
-
-            </div>
-            <div class="navbar-collapse collapse">
-                 <ul class="nav navbar-nav navbar-center">
-                   <li><a href="Buscar.php">MOSTRAR-ADMINISTRADORES</a></li>
-                   <li><a href="Buscarusu.php">MOSTRAR-USUARIOS</a></li>
-                   <li><a href="Buscarpubli.php">MOSTRAR-PUBLICACIONES</a></li>
-                   <li><a href="Registrarse.php">CREAR-ADMINISTRADOR</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-     <!--END NAV SECTION -->
-
-
-
-     <section  id="services-sec">
-     </section>
-
      <section  id="services-sec">
        <div class="container"  >
            <div class="row text-center">

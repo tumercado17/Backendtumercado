@@ -1,11 +1,13 @@
 <?php
 Require_once("../logica/funciones.php");
+require_once("../logica/sesiones.php");
+Require_once('../presentacion/menu.php');
 
 $conex=conectar();
 $ID = $_GET["ID"];
 
-$consultas="select ci,nombre,apellido,email,pais,contrasena,calle,numero,cipersona,telefono,grado from persona,telefonopersona,administrador
-      where (persona.ci=telefonopersona.cipersona) and (persona.ci=administrador.ciadministrador) and ci=$ID;";
+$consultas="select idadministrador,ci,nombre,apellido,email,calle,numero,contrasena,grado
+            from persona,administrador where idadministrador=$ID and ci=ciadministrador;";
 
 
 $result=$conex->prepare($consultas);
@@ -18,47 +20,8 @@ for ($i=0;$i<count($resultados);$i++) {
 <!DOCTYPE html>
 
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-
-  <title>Multipager Template- Travelic </title>
-
-  <link href="assets/css/bootstrap.css" rel="stylesheet" />
-  <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="assets/css/font-awesome-animation.css" rel="stylesheet" />
-  <link href="assets/css/prettyPhoto.css" rel="stylesheet" />
-  <link href="assets/css/style.css" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-</head>
-<body>
-   <!-- NAV SECTION -->
-       <div class="navbar navbar-inverse navbar-fixed-top">
-
-      <div class="container">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="index.php">TUMERCADO</a>
-
-          </div>
-          <div class="navbar-collapse collapse">
-               <ul class="nav navbar-nav navbar-center">
-                 <li><a href="Buscar.php">MOSTRAR-ADMINISTRADORES</a></li>
-                 <li><a href="Buscarusu.php">MOSTRAR-USUARIOS</a></li>
-                 <li><a href="Buscarpubli.php">MOSTRAR-PUBLICACIONES</a></li>
-                 <li><a href="Registrarse.php">CREAR-ADMINISTRADOR</a></li>
-              </ul>
-          </div>
-
-          <section  id="services-sec">
+  <body>
+    <section  id="services-sec">
          <form action="../logica/procesarmodiadmin.php" method="POST">
            <div class="container">
              <form>
@@ -82,7 +45,7 @@ for ($i=0;$i<count($resultados);$i++) {
                          <div class="col-md-6 ">
                              <div class="form-group">
                                  contraseña
-                                 <input type="text" class="form-control" id="contrasena" name="contrasena" value='<?php echo $resultados[$i]["contrasena"];?>'>
+                                 <input type="password" class="form-control" id="contrasena" name="contrasena" value='<?php echo $resultados[$i]["contrasena"];?>'>
                              </div>
                          </div>
 

@@ -46,5 +46,10 @@ class administrador{
 	   $pu = new Persistenciaadministrador;
 	   return ($pu->agregaradmin($this,$conex));
 	  }
+
+		function listaradmin($conex){
+	   $pu = new Persistenciaadministrador;
+	   return ($pu->mostraradmin($this,$conex));
+	  }
 }
 ?>

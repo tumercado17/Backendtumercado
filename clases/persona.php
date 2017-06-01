@@ -177,6 +177,11 @@ class Persona{
        $pu = new Persistenciapersona;
        return $pu->listarsan($this,$conex);
       }
+
+      public function mostrarsanadmin($conex){
+       $pu = new Persistenciapersona;
+       return $pu->listarsanadmin($this,$conex);
+      }
     }
 
 

@@ -13,10 +13,13 @@ function conectar(){
     }
 }
 
-function desconectar($conexion)
-{
+function desconectar($conexion){
    $conexion=null;
+}
 
+function salir(){
+	session_unset();
+	session_destroy();
 }
 
 

@@ -74,19 +74,33 @@ Require_once ('../logica/funciones.php'); //donde se conecta a la base
 
 			    }
 
+
 					public function listarsan($obj,$conex){
+
+						$ci = trim($obj->getci());
+
+						$sql = "select * from sansiona where ciusuariosan=:ci;";
+						$consulta = $conex->prepare($sql);
+						$consulta->execute(array(':ci'=>$ci));
+
+						$result = $consulta->fetchAll();
+						return $result;
+
+					}
+
+					public function listarsanadmin($obj,$conex){
 
 							$ci = trim($obj->getci());
 
-						 	$sql = "select * from sansiona where ciusuariosan=:ci;";
-			        $consulta = $conex->prepare($sql);
+						 	//$sql = "select * from sansionadmin where idadministradorsan2=:id;";
+							$sql = "select * from sancionadmin where ciadministradorsanadmin = :ci;";
+							$consulta = $conex->prepare($sql);
 							$consulta->execute(array(':ci'=>$ci));
 
 							$result = $consulta->fetchAll();
 							return $result;
 
 				    }
-
 		}
 
 

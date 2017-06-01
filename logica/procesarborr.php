@@ -13,11 +13,13 @@ $datos_s=$u->borrar($conex);
   if(!empty($datos_s)){
 
     $conex=conectar();
-    
+
     // Si existe solo cambia el campo de suspencion
     $consultas = "delete from permuta where idpublicacion=:id;
-    delete from bajasuspencion where idbajapublicacion=:id;
-    delete from publicacion where id=:id;";
+                  delete from vendecompra where idvendepublicacion=:id;
+                  delete from subasta where idcomsubpublicacion=:id;
+                  delete from bajasuspencion where idbajapublicacion=:id;
+                  delete from publicacion where id=:id;";
 
     $result=$conex->prepare($consultas);
     $result->execute(array(':id'=>$id));

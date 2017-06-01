@@ -2,59 +2,15 @@
 Require_once('../clases/persona.php');
 Require_once('../clases/usuario.class.php');
 Require_once('../logica/funciones.php');
+Require_once('../logica/sesiones.php');
+Require_once('../presentacion/menu.php');
 
 ?>
-
 <!DOCTYPE html>
 
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-
-    <title>Multipager Template- Travelic </title>
-
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="assets/css/font-awesome-animation.css" rel="stylesheet" />
-    <link href="assets/css/prettyPhoto.css" rel="stylesheet" />
-    <link href="assets/css/style.css" rel="stylesheet" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-</head>
-<body>
-     <!-- NAV SECTION -->
-         <div class="navbar navbar-inverse navbar-fixed-top">
-
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.php">TUMERCADO</a>
-
-            </div>
-            <div class="navbar-collapse collapse">
-                 <ul class="nav navbar-nav navbar-center">
-                   <li><a href="Buscar.php">MOSTRAR-ADMINISTRADORES</a></li>
-                   <li><a href="Buscarusu.php">MOSTRAR-USUARIOS</a></li>
-                   <li><a href="Buscarpubli.php">MOSTRAR-PUBLICACIONES</a></li>
-                   <li><a href="Registrarse.php">CREAR-ADMINISTRADOR</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-     <!--END NAV SECTION -->
-		 <section  id="services-sec">
-          </section>
-
-     <section  id="services-sec">
+  <body>
+    <section  id="services-sec">
        <div class="container"  >
            <div class="row text-center">
              <table class="table">
@@ -68,9 +24,9 @@ Require_once('../logica/funciones.php');
                  <td>Numero</td>
                  <td>calificacion</td>
                  <td>Nombre</td>
-                 <td>--------</td>
-                 <td>--------</td>
-                 <td>--------</td>
+                 <td>------</td>
+                 <td>------</td>
+                 <td>------</td>
 								</tr>
 
                 <?php
@@ -78,7 +34,8 @@ Require_once('../logica/funciones.php');
                 //Hace la conexion y la consulta para luego mostrar los datos de persona
                 $conex=conectar();
                 $sql ="select usuario.idusuario,ciusuario,nombre,apellido,email,calle,numero,calificacion,nombreusu from
-              usuario,nombreusuario,persona where (usuario.idusuario=nombreusuario.idusuario)  and (persona.ci=usuario.ciusuario);";
+                       usuario,nombreusuario,persona where (usuario.idusuario=nombreusuario.idusuario)
+                       and (persona.ci=usuario.ciusuario);";
                 $result=$conex->prepare($sql);
                 $result->execute();
                 $resultados=$result->fetchAll();
@@ -99,9 +56,25 @@ Require_once('../logica/funciones.php');
                   <td><?php echo $resultados[$i]["calificacion"];?></td>
                   <td><?php echo $resultados[$i]["nombreusu"];?></td>
 
-                  <td><a href="modifiusu.php?ID=<?php echo $IDu;?>">Modificar</a></td>
-                  <td><a href="sancionusu.php?ID=<?php echo $IDu;?>">Sancionar</a></td>
-                  <td><a href="borrarusu.php?ID=<?php echo $IDu;?>">Borrar</a></td>
+                  <td><?php if ($_SESSION["GRADO"]=="Lector de registro" or $_SESSION["GRADO"]=="Penalizador"){
+                  }else{
+                    ?>
+                    <a href="modifiusu.php?ID=<?php echo $IDu;?>">Modificar</a></td>
+                    <?php
+                  }
+                     ?>
+                  <td><?php if ($_SESSION["GRADO"]=="Lector de registro"){
+                  }else{
+                    ?><a href="sancionusu.php?ID=<?php echo $IDu;?>">Sancionar</a></td>
+                    <?php
+                  }
+                     ?>
+                  <td><?php if ($_SESSION["GRADO"]=="Lector de registro" or $_SESSION["GRADO"]=="Penalizador"){
+                  }else{
+                    ?><a href="borrarusu.php?ID=<?php echo $IDu;?>">Borrar</a></td>
+                    <?php
+                  }
+                     ?>
                 </tr>
 
                 <?php

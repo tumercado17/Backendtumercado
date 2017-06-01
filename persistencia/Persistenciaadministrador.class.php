@@ -10,7 +10,8 @@ Require_once ('../logica/funciones.php');
 			$grado = $obj->getgrado();
 
 			//CONSULTA SQL
-			$sql = "insert into administrador (idadministrador,ciadministrador,grado) values (:idadministrador,:ciadministrador,:grado)";
+			$sql = "insert into administrador (idadministrador,ciadministrador,grado)
+							values (:idadministrador,:ciadministrador,:grado)";
 
 			//VARIABLES PARA SQL "PREPARE" ES UNA FUNCION PDO, ES UNA FUNCION DEFINIDA
 
@@ -23,6 +24,25 @@ Require_once ('../logica/funciones.php');
 				return false;
 				}
 			}
+
+			function mostraradmin($obj,$conex){
+
+					$grado = $obj->getgrado();
+
+					//CONSULTA SQL
+					$sql = "select grado from administrador where grado=:grado;";
+
+					//VARIABLES PARA SQL "PREPARE" ES UNA FUNCION PDO, ES UNA FUNCION DEFINIDA
+
+					$consulta = $conex->prepare($sql);																			//DEFINIMOS LA CONSULTA, Y LA PREPARAMOS
+					$consulta->execute(array(":grado"=>$grado));
+
+					if($consulta){
+						return true;
+					}else{
+						return false;
+						}
+					}
 
 		}
 ?>

@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION["PHPSESSID"]=session_id();
+
+ ?>
 ﻿<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-   <title>Multipager Template- Travelic </title>
+   <title>Login-Tumercado-</title>
 
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
@@ -15,22 +20,27 @@
     <link href="assets/css/style.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   </head>
-
 <body>
+    <img src="../imagenes/logoadmin.png" width="200 " height="200"/>
     <section  id="services-sec">
+      <div class="navbar-collapse collapse">
+      <h1>-TUMERCADO BACKEND-LOGIN DE ADMINISTRADOR</h1>
+      </div>
 
         <div class="container">
           <form action="../logica/procesarlogin.php" method="POST">
               <div class="row">
                   <div class="col-md-6 ">
                       <div class="form-group">
+                          Nombre de usuario
                           <input type="text" id="nombre" name="nombre" class="form-control" required="required" placeholder="Nombre">
                       </div>
                   </div>
               </div>
               <div class="row">
-                  <div class="col-md-12 ">
+                  <div class="col-md-6 ">
                       <div class="form-group">
+                          Contraseña
                           <input type="Password" id="contrasena" name="contrasena" class="form-control" required="required" placeholder="Password">
                       </div>
                       <div class="form-group">
@@ -42,10 +52,7 @@
           </form>
         </div>
     </section>
-      <!--END Package SECTION-->
 
-
-    <!--FOOTER SECTION -->
     <div id="footer">
       2017 www.tumercado.com | Todos los derechos reservados
 

@@ -10,9 +10,10 @@ $conex = conectar();
 
 $u= new Persona ($ci,'','','','','','','',''); //la cantidad de elementos de la clase
 
-$datos_s=$u->mostrarsan($conex);
+$datos_s=$u->mostrarsanadmin($conex);
 
   if(!empty($datos_s)){
+/*
     $conex=conectar();
 
     // Si existe solo cambia el campo de suspencion
@@ -20,16 +21,17 @@ $datos_s=$u->mostrarsan($conex);
     $result=$conex->prepare($consultas);
     $result->execute(array(':sancion'=>$san,':fecha'=>$fecha,':ci'=>$ci));
     $consulta=$result->fetchAll();
-
+*/
     ?>
     <script type="text/javascript">
-    window.alert("Se aplicaron cambios correctamente.");
-    location.href="../presentacion/buscarusu.php";
+    window.alert("Se aplico sancion correctamente.");
+    location.href="../presentacion/buscar.php";
     </script>
     <?php
 
         }else{
 
+/*
           $conex=conectar();
 
           // Si existe solo cambia el campo de suspencion
@@ -38,11 +40,11 @@ $datos_s=$u->mostrarsan($conex);
           $result=$conex->prepare($consultas);
           $result->execute(array(':sancion'=>$san,':fecha'=>$fecha,':ci'=>$ci));
           $consulta=$result->fetchAll();
-
+*/
           ?>
           <script type="text/javascript">
-          window.alert("EL usuario no existe por lo tanto no se aplican los cambios");
-          location.href="../presentacion/buscarpubli.php";
+          window.alert("EL usuario no presentaba antecedentes, se aplicaron los cambios correctamente");
+          location.href="../presentacion/buscar.php";
           </script>
           <?php
         //  desconectar($conex);

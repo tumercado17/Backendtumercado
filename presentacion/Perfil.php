@@ -1,55 +1,12 @@
+<?php
+require_once("../logica/sesiones.php");
+Require_once('../presentacion/menu.php');
+ ?>
 ﻿<!DOCTYPE html>
 
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Multipager Template- Travelic </title>
-
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="assets/css/font-awesome-animation.css" rel="stylesheet" />
-    <link href="assets/css/prettyPhoto.css" rel="stylesheet" />
-    <link href="assets/css/style.css" rel="stylesheet" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  </head>
-<body>
-     <!-- NAV SECTION -->
-         <div class="navbar navbar-inverse navbar-fixed-top">
-
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.php">TUMERCADO</a>
-
-            </div>
-            <div class="navbar-collapse collapse">
-                 <ul class="nav navbar-nav navbar-center">
-                   <li><a href="Buscar.php">MOSTRAR-ADMINISTRADORES</a></li>
-                   <li><a href="Buscarusu.php">MOSTRAR-USUARIOS</a></li>
-                   <li><a href="Buscarpubli.php">MOSTRAR-PUBLICACIONES</a></li>
-                   <li><a href="Perfil.php">PERFIL</a></li>
-                   <li><a href="Registrarse.php">REGISTRAR</a></li>
-                   <li><a href="Ayuda.php">AYUDA</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-     <!--END NAV SECTION -->
-
-     <section  id="services-sec">
-     </section>
-
-     <section  id="services-sec">
+  <body>
+    <section  id="services-sec">
        <div class="container"  >
            <div class="row text-center">
              <table class="table">
