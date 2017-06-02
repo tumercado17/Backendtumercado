@@ -23,19 +23,20 @@ Require_once('../presentacion/menu.php');
                  <td>Calle</td>
                  <td>Numero</td>
                  <td>calificacion</td>
-                 <td>Nombre</td>
-                 <td>------</td>
-                 <td>------</td>
-                 <td>------</td>
+                 <td>Tipo</td>
+                 <td>Estado</td>
+                 <td>-</td>
+                 <td>-</td>
+                 <td>-</td>
 								</tr>
 
                 <?php
 
                 //Hace la conexion y la consulta para luego mostrar los datos de persona
                 $conex=conectar();
-                $sql ="select usuario.idusuario,ciusuario,nombre,apellido,email,calle,numero,calificacion,nombreusu from
-                       usuario,nombreusuario,persona where (usuario.idusuario=nombreusuario.idusuario)
-                       and (persona.ci=usuario.ciusuario);";
+                $sql ="select usuario.idusuario,ciusuario,nombre,apellido,email,calle,numero,calificacion,nombreusu,estado
+                        from usuario,nombreusuario,sansiona,persona where (usuario.idusuario=nombreusuario.idusuario)
+                        and (persona.ci=usuario.ciusuario) and (ciusuariosan=ciusuario);";
                 $result=$conex->prepare($sql);
                 $result->execute();
                 $resultados=$result->fetchAll();
@@ -55,6 +56,7 @@ Require_once('../presentacion/menu.php');
                   <td><?php echo $resultados[$i]["numero"];?></td>
                   <td><?php echo $resultados[$i]["calificacion"];?></td>
                   <td><?php echo $resultados[$i]["nombreusu"];?></td>
+                  <td><?php echo $resultados[$i]["estado"];?></td>
 
                   <td><?php if ($_SESSION["GRADO"]=="Lector de registro" or $_SESSION["GRADO"]=="Penalizador"){
                   }else{

@@ -1,5 +1,5 @@
 <?php
-Require_once ('../logica/funciones.php'); //donde se conecta a la base
+//Require_once ('../logica/funciones.php'); //donde se conecta a la base
 
 	class Persistenciapersona{
 
@@ -52,7 +52,7 @@ Require_once ('../logica/funciones.php'); //donde se conecta a la base
 
 			public function listarper($conex){
 
-				 	$sql = "select * from persona";
+				 	$sql = "select * from persona;";
 	        $consulta = $conex->prepare($sql);
 					$consulta->execute();
 

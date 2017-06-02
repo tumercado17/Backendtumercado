@@ -4,7 +4,7 @@ require_once("../logica/sesiones.php");
 ﻿<!DOCTYPE html>
 <html lang="en">
     <head>
-            
+
       <link href="assets/css/bootstrap.css" rel="stylesheet" />
       <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
       <link href="assets/css/font-awesome-animation.css" rel="stylesheet" />
@@ -29,7 +29,7 @@ require_once("../logica/sesiones.php");
                   }
                     ?>
                   <li><a href="Buscarusu.php">MOSTRAR-USUARIOS</a></li>
-                  <li><?php if ($_SESSION["GRADO"]=="Administrador del sistema"){
+                  <li><?php if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Administrador de frontend"){
                     ?>
                     <a href="Buscarpubli.php">MOSTRAR-PUBLICACIONES</a></li>
                     <?php
@@ -41,9 +41,30 @@ require_once("../logica/sesiones.php");
                     <?php
                   }
                     ?>
-                    <li><a href="buscarcomvende.php">COMENTARIOS-PUBLICACIONES</a></li>
-                    <li><a href="buscarcomper.php">COMENTARIOS-PERMUTA</a></li>
-                    <li><a href="buscarcomsub.php">COMENTARIOS-SUBASTA</a></li>
+                    <li><?php if ($_SESSION["GRADO"]=="Administrador del sistema"){
+                      ?>
+                      <a href="../reportes/listadoUsuarios.php">CREAR-PDF</a></li>
+                      <?php
+                    }
+                      ?>
+                    <li><?php if ($_SESSION["GRADO"]=="Administrador del sistema"){
+                      ?>
+                      <a href="buscarcomvende.php">COMENTARIOS-PUBLICACIONES</a></li>
+                      <?php
+                    }
+                      ?>
+                    <li><?php if ($_SESSION["GRADO"]=="Administrador del sistema"){
+                      ?>
+                      <a href="buscarcomper.php">COMENTARIOS-PERMUTA</a></li>
+                      <?php
+                    }
+                      ?>
+                    <li><?php if ($_SESSION["GRADO"]=="Administrador del sistema"){
+                      ?>
+                      <a href="buscarcomsub.php">COMENTARIOS-SUBASTA</a></li>
+                      <?php
+                    }
+                      ?>
                     <li><?php if (!empty($_SESSION["LOGIN"])){
                       ?>
                       <a href="Salir.php" style="color:red;">CERRAR SESION</a></li>

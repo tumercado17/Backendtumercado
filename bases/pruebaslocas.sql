@@ -233,18 +233,34 @@
 
 
 -- PARA PODER BORRAR LAS PUBLICACIONES SEAN DEL TIPO QUE SEAN
-select idsubpublicacion,idpublicacion,permuta.calificacion,id,cipersona,nombre,apellido,email,nombrepubli,descripcion,categoria,stock,tipo
-from publicacion,persona,permuta,vendecompra,subasta
-where (cipersona=ci and id=3) and (idpublicacion=id) or (idsubpublicacion=id) group by id;
 
-select * from permuta;
-select * from subasta;
-select * from vendecompra;
+-- select idsubpublicacion,idpublicacion,permuta.calificacion,id,cipersona,nombre,apellido,email,nombrepubli,descripcion,categoria,stock,tipo
+-- from publicacion,persona,permuta,vendecompra,subasta
+-- where (cipersona=ci and id=3) and (idpublicacion=id) or (idsubpublicacion=id) group by id;
+
+-- select * from permuta;
+-- select * from subasta;
+-- select * from vendecompra;
 
 
-select id,cipersona,nombre,apellido,email,nombrepubli,descripcion,categoria,stock,tipo
-from publicacion,persona,permuta,subasta,vendecompra 
-where cipersona=ci group by id order by ci;
+-- select id,cipersona,nombre,apellido,email,nombrepubli,descripcion,categoria,stock,tipo
+-- from publicacion,persona,permuta,subasta,vendecompra 
+-- where cipersona=ci group by id order by ci;
 
-select administrador.grado,nombre,apellido from persona,administrador where ci=52185440 and ciadministrador=52185440;
+-- select administrador.grado,nombre,apellido from persona,administrador where ci=52185440 and ciadministrador=52185440;
 
+
+-- Select PARA PODER LISTAR LOS USUARIOS Y SUS SANCIONES
+
+-- select usuario.idusuario,ciusuario,nombre,apellido,ci,email,calle,numero,calificacion,nombreusu,estado from
+-- usuario,nombreusuario,sansiona,persona where (usuario.idusuario=nombreusuario.idusuario)
+-- and (persona.ci=usuario.ciusuario) and (usuario.idusuario=3 and ciusuariosan=ciusuario);
+
+-- MUESTRA TODOS LOS USUARIOS E INCLUYE SU ESTADO DE SANCION
+-- select usuario.idusuario,ciusuario,nombre,apellido,email,calle,numero,calificacion,nombreusu,estado 
+-- from usuario,nombreusuario,sansiona,persona where (usuario.idusuario=nombreusuario.idusuario)
+-- and (persona.ci=usuario.ciusuario) and (ciusuariosan=ciusuario);
+
+select usuario.idusuario,ciusuario,nombre,apellido,email,calle,numero,calificacion,nombreusu 
+from   usuario,nombreusuario,persona where (usuario.idusuario=nombreusuario.idusuario)
+and (persona.ci=usuario.ciusuario);

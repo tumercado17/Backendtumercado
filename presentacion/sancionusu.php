@@ -6,9 +6,9 @@ Require_once('../presentacion/menu.php');
   $conex=conectar();
   $ID = $_GET["ID"];
 
-    $consultas="select usuario.idusuario,ciusuario,nombre,apellido,ci,email,calle,numero,calificacion,nombreusu from
-                usuario,nombreusuario,persona where (usuario.idusuario=nombreusuario.idusuario)
-                and (persona.ci=usuario.ciusuario) and usuario.idusuario=$ID;";
+    $consultas="select usuario.idusuario,ciusuario,nombre,apellido,ci,email,calle,numero,calificacion,nombreusu,estado from
+                usuario,nombreusuario,sansiona,persona where (usuario.idusuario=nombreusuario.idusuario)
+                and (persona.ci=usuario.ciusuario) and (usuario.idusuario=$ID and ciusuariosan=ciusuario)";
 
   $result=$conex->prepare($consultas);
   $result->execute();
@@ -34,7 +34,8 @@ Require_once('../presentacion/menu.php');
                         <td>Email</td>
                         <td>Calle</td>
                         <td>Numero</td>
-                        <td>calificacion</td>
+                        <td>Calificacion</td>
+                        <td>Estado</td>
                         </tr>
 
                         <tr>
@@ -45,6 +46,7 @@ Require_once('../presentacion/menu.php');
                          <td><?php echo $resultados[$i]["calle"];?></td>
                          <td><?php echo $resultados[$i]["numero"];?></td>
                          <td><?php echo $resultados[$i]["calificacion"];?></td>
+                         <td><?php echo $resultados[$i]["estado"];?></td>
                          </tr>
 
                     </table>

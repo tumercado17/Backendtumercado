@@ -42,7 +42,7 @@ $datos_s=$u->mostrarsan($conex);
           ?>
           <script type="text/javascript">
           window.alert("EL usuario no existe por lo tanto no se aplican los cambios");
-          location.href="../presentacion/buscarpubli.php";
+          location.href="../presentacion/buscarusu.php";
           </script>
           <?php
         //  desconectar($conex);

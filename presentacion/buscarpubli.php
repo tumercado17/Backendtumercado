@@ -26,9 +26,9 @@ Require_once('../presentacion/menu.php');
                  <td>Categoria</td>
                  <td>Stock</td>
                  <td>Tipo</td>
-                 <td>--------</td>
-                 <td>--------</td>
-                 <td>--------</td>
+                 <td>-</td>
+                 <td>-</td>
+                 <td>-</td>
 								</tr>
 
                 <?php
@@ -57,9 +57,25 @@ Require_once('../presentacion/menu.php');
                   <td><?php echo $resultados[$i]["categoria"];?></td>
                   <td><?php echo $resultados[$i]["stock"];?></td>
                   <td><?php echo $resultados[$i]["tipo"];?></td>
-                  <td><a href="modificarpubli.php?ID=<?php echo $IDu;?>">Modificar</a></td>
-                  <td><a href="sancion.php?ID=<?php echo $IDu;?>">Sancionar</a></td>
-                  <td><a href="borrarpubli.php?ID=<?php echo $IDu;?>">Borrar</a></td>
+
+                  <td><?php if ($_SESSION["GRADO"]=="Administrador del sistema"){
+                      ?>
+                      <a href="modificarpubli.php?ID=<?php echo $IDu;?>">Modificar</a></td>
+                      <?php
+                    }
+                       ?>
+                  <td><?php if ($_SESSION["GRADO"]=="Administrador del sistema"){
+                    ?>
+                    <a href="sancion.php?ID=<?php echo $IDu;?>">Sancionar</a></td>
+                    <?php
+                  }
+                     ?>
+                  <td><?php if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Administrador de frontend"){
+                    ?>
+                    <a href="borrarpubli.php?ID=<?php echo $IDu;?>">Borrar</a></td>
+                    <?php
+                  }
+                     ?>
                 </tr>
 
                 <?php
