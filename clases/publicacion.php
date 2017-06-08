@@ -139,5 +139,10 @@ class Publicacion{
 	   return ($pu->eliminar($this,$conex));
 	  }
 
+    function buscarPubl($conex){
+      $obj = new PersistenciaPublicacion;
+      return $obj->buscarPubl($this,$conex);
+    }
+
 }
 ?>

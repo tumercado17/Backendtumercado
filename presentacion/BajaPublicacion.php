@@ -1,6 +1,18 @@
 <?php
 require_once("../logica/sesiones.php");
 Require_once('../presentacion/menu.php');
+
+if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Administrador de frontend"){
+?>
+  <?php
+}else {
+  ?>
+  <script type="text/javascript">
+    window.alert ("¡No tiene los permisos necesarios <?php echo $_SESSION["LOGIN"];?>!\n Solo los administradores del sistema acceden aqui!!");
+    location.href="../presentacion/menu.php";
+  </script>
+  <?php
+}
 ?>
 ﻿<!DOCTYPE html>
 

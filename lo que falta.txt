@@ -1,0 +1,3 @@
+Realizar sanitizacion de los campos.
+Realizar borrado de publicaciones.
+PDF's restantes.

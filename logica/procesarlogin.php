@@ -42,7 +42,7 @@ $datos_u=$u->loginper($conex);
 
 		?>
     <script type="text/javascript">
-    location.href="../presentacion/menu.php";
+    location.href="../presentacion/estadisticas.php";
     </script>
 
 

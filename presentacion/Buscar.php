@@ -3,13 +3,26 @@ Require_once('../clases/persona.php');
 Require_once('../logica/funciones.php');
 Require_once('../logica/sesiones.php');
 Require_once('../presentacion/menu.php');
+
+if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Administrador de frontend"){
+?>
+  <?php
+}else {
+  ?>
+  <script type="text/javascript">
+    window.alert ("¡No tiene los permisos necesarios <?php echo $_SESSION["LOGIN"];?>!\n Solo los administradores del sistema acceden aqui!!");
+    location.href="../presentacion/estadisticas.php";
+  </script>
+  <?php
+}
+
 ?>
 <!DOCTYPE html>
 
 <html lang="en">
      <form action="sancionadmin.php" id="FrmListadoUsuarios" method="POST">
      <section  id="services-sec">
-       <div class="container"  >
+       <div class="container">
            <div class="row text-center">
              <table class="table">
                <tr>
@@ -23,9 +36,9 @@ Require_once('../presentacion/menu.php');
                  <td>Numero</td>
                  <td>Telefono</td>
                  <td>Grado</td>
-                 <td>--------</td>
-                 <td>--------</td>
-                 <td>--------</td>
+                 <td>-</td>
+                 <td>-</td>
+                 <td>-</td>
 								</tr>
 
                 <?php

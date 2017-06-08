@@ -9,7 +9,7 @@ ob_end_clean();
 //Establece la conexi�n con la base de datos
 //Realiza la consulta
 $conex=conectar();
-$sql ="select idadministrador,ci,nombre,apellido,email,pais,contrasena,calle,numero,cipersona,telefono,grado from persona,telefonopersona,administrador
+$sql ="select idadministrador,ci,nombre,apellido,email,pais,grado,calle,numero,cipersona,telefono from persona,telefonopersona,administrador
       where (persona.ci=telefonopersona.cipersona) and (persona.ci=administrador.ciadministrador);";
 $result=$conex->prepare($sql);
 $result->execute();
@@ -33,7 +33,7 @@ class PDF extends FPDF{
 	  $titulo='Listado de Usuarios de Frontend';
     $Cabezal='Tu Mercado Backend';
     //logo
-    $this->Image('../imagenes/logoadmin.png',20,5,50,40,'','');
+    $this->Image('../imagenes/logoadmin.png',20,5,50,45,'','');
      //Arial bold 15
     $this->SetFont('Arial','U',12);
     // obtener el ancho del string con el tipo de letra actual
@@ -55,12 +55,12 @@ class PDF extends FPDF{
 
 		$this->SetFont('Arial','BI',8);
 		// function Cell(w,h,txt,borde,ln,alineacion,llenado,link)
-		$this->cell(10,4,'Ci',1,0,'L');
-		$this->cell(55,4,'Nombre',1,0,'L');
+		$this->cell(15,4,'Ci',1,0,'L');
+		$this->cell(25,4,'Nombre',1,0,'L');
 		$this->cell(25,4,'Apellido',1,0,'L');
-		$this->cell(30,4,'Email',1,0,'L');
+		$this->cell(50,4,'Email',1,0,'L');
 		$this->cell(30,4,'Pais',1,0,'L');
-		$this->cell(40,4,'Calificacion',1,0,'L');
+		$this->cell(40,4,'Grado',1,0,'L');
 		$this->Ln();
 
 	}//end function Header
@@ -73,7 +73,7 @@ class PDF extends FPDF{
 		//Arial italic 10
 		$this->SetFont('Arial','I',10);
 		//N�mero de p�gina
-		$this->Cell(0,5,'P�gina N� '.$this->PageNo().' de {nb}',0,0,'C');
+		$this->Cell(0,5,'Pagina N '.$this->PageNo().' de {nb}',0,0,'C');
 
 	} // end function Footer
 
@@ -87,10 +87,10 @@ class PDF extends FPDF{
 			// Arial Bold Italic de 8
 			$this->SetFont('Arial','I',8);
 			// function Cell(w,h,txt,borde,ln,alineacion,llenado,link)
-			$this->cell(10,4,trim($fila[0]),1,0,'L');
-			$this->cell(55,4,substr(trim($fila[1]),0,30),1,0,'L');
-			$this->cell(25,4,trim($fila[2]),1,0,'L');
-			$this->cell(30,4,trim($fila[3]),1,0,'L');
+			$this->cell(15,4,trim($fila[1]),1,0,'L');
+			$this->cell(25,4,substr(trim($fila[2]),0,30),1,0,'L');
+			$this->cell(25,4,trim($fila[3]),1,0,'L');
+			$this->cell(50,4,trim($fila[4]),1,0,'L');
 			$this->cell(30,4,trim($fila[5]),1,0,'L');
 			$this->cell(40,4,trim($fila[6]),1,0,'L');
 			$this->Ln();

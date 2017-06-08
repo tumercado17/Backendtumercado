@@ -5,9 +5,21 @@ Require_once('../presentacion/menu.php');
 
 $conex=conectar();
 $ID = $_GET["ID"];
+$tipo = $_SESSION["TIPO"];
 
-$consultas="select id,cipersona,nombre,apellido,email,nombrepubli,descripcion,categoria,stock,tipo
-            from publicacion,persona,permuta,vendecompra,subasta where cipersona=ci and id=$ID group by id;";
+if ($tipo == "Venta"){
+$consultas="SELECT id,cipersona,nombrepubli,tipo,comentarioven,idcomvenpublicacion  FROM  publicacion
+            INNER JOIN comentariovendecompra ON idcomvenpublicacion = id WHERE id=$ID";
+
+}elseif ($tipo == "Subasta") {
+  $consultas="SELECT id,cipersona,nombrepubli,tipo,comentariosub,idcomsubpublicacion  FROM  publicacion
+              INNER JOIN comentariosubasta ON idcomsubpublicacion = id WHERE id=$ID;";
+
+}elseif ($tipo == "Permuta") {
+
+  $consultas="SELECT id,cipersona,nombrepubli,tipo,comentarioper,idcompermuta  FROM  publicacion
+              INNER JOIN comentariopermuta ON idcompermuta = id WHERE id=$ID;";
+  }
 
 $result=$conex->prepare($consultas);
 $result->execute();
@@ -29,28 +41,46 @@ for ($i=0;$i<count($resultados);$i++) {
                       <tr>
                         <td>IDPublicacion</td>
                         <td>CI</td>
-                        <td>Nombre</td>
-                        <td>Apellido</td>
-                        <td>Email</td>
-                        <td>Nombre Publicacion</td>
-                        <td>Descripcion</td>
-                        <td>Categoria</td>
-                        <td>Stock</td>
+                        <td>Nombre de publicacion</td>
                         <td>Tipo</td>
-                       </tr>
+                        <td>Comentario</td>
+                      </tr>
 
                         <tr>
                          <td><?php echo $resultados[$i]["id"];?></td>
                          <td><?php echo $resultados[$i]["cipersona"];?></td>
-                         <td><?php echo $resultados[$i]["nombre"];?></td>
-                         <td><?php echo $resultados[$i]["apellido"];?></td>
-                         <td><?php echo $resultados[$i]["email"];?></td>
                          <td><?php echo $resultados[$i]["nombrepubli"];?></td>
-                         <td><?php echo $resultados[$i]['descripcion'];?></td>
-                         <td><?php echo $resultados[$i]["categoria"];?></td>
-                         <td><?php echo $resultados[$i]["stock"];?></td>
                          <td><?php echo $resultados[$i]["tipo"];?></td>
-                       </tr>
+                         <?php
+                         if ($tipo == "Venta"){
+                          ?>
+                         <td>
+                           <?php echo $resultados[$i]["comentarioven"];?></td>
+                        </tr>
+                        <?php
+                        }
+                         ?>
+                         <?php
+                         if ($tipo == "Permuta"){
+                          ?>
+                         <td>
+                           <?php echo $resultados[$i]["comentarioper"];?></td>
+                        </tr>
+                        <?php
+                        }
+                         ?>
+
+                         <?php
+                         if ($tipo == "Subasta"){
+                          ?>
+                         <td>
+                           <?php echo $resultados[$i]["comentariosub"];?></td>
+                        </tr>
+                        <?php
+                        }
+                         ?>
+
+
 
                     </table>
                   </div>
@@ -61,12 +91,8 @@ for ($i=0;$i<count($resultados);$i++) {
             <input type="text" class="form-control" style="visibility:hidden" id="cipersona" name="cipersona" value='<?php echo $resultados[$i]["cipersona"];?>'>
             <button type="submit" class="btn btn-success" align="center">Confirmar Borrado</button>
           </form>
-  <div id="footer">
-      2017 www.tumercado.com | Todos los derechos reservados
 
-    </div>
-
-	  <script src="assets/plugins/jquery-1.10.2.js"></script>
+    <script src="assets/plugins/jquery-1.10.2.js"></script>
     <script src="assets/plugins/bootstrap.min.js"></script>
     <script src="assets/plugins/jquery.isotope.min.js"></script>
     <script src="assets/plugins/jquery.prettyPhoto.js"></script>

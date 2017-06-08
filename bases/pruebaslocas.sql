@@ -34,14 +34,13 @@
 -- insert into nombreusuario (idusuario,nombreusu) values (1,"GRATIS");
 
  insert into publicacion (id,cipersona,nombrepubli,precio,descripcion,categoria,stock,fecha,tipo) 
- values (1,52185428,"Cajones lindos",100,"publicacion muestra 1","Hogar",1,CURDATE(),"permuta");
+ values (1,52185428,"Cajones lindos",100,"publicacion muestra 1","Hogar",1,CURDATE(),"Permuta");
+
+insert into permuta (idpublicacion,calificacion,fecha) values (1,"no califica",CURDATE());
 
  insert into publicacion (id,cipersona,nombrepubli,precio,descripcion,categoria,stock,fecha,tipo) 
- values (4,52185428,"Subasto todo lo que venga",200,"subasta muestra 1","TODOS",1,CURDATE(),"VENDE");
-
- insert into permuta (idpublicacion,calificacion,fecha) values (1,"no califica",CURDATE());
-
-
+ values (4,52185428,"Subasto todo lo que venga",200,"subasta muestra 1","TODOS",1,CURDATE(),"Vende");
+ 
  insert into persona (ci,nombre,apellido,email,pais,contrasena,calle,numero,tarjeta,calificacion) 
  values (52212360,"matias","gallardo","matiasgallardo@gmail.com","Uruguay","matias","calera de las huerfas",4345,999999,"Mal vendedor");
 
@@ -261,6 +260,98 @@
 -- from usuario,nombreusuario,sansiona,persona where (usuario.idusuario=nombreusuario.idusuario)
 -- and (persona.ci=usuario.ciusuario) and (ciusuariosan=ciusuario);
 
-select usuario.idusuario,ciusuario,nombre,apellido,email,calle,numero,calificacion,nombreusu 
-from   usuario,nombreusuario,persona where (usuario.idusuario=nombreusuario.idusuario)
-and (persona.ci=usuario.ciusuario);
+-- select usuario.idusuario,ciusuario,nombre,apellido,email,calle,numero,calificacion,nombreusu 
+-- from   usuario,nombreusuario,persona where (usuario.idusuario=nombreusuario.idusuario)
+-- and (persona.ci=usuario.ciusuario);
+
+-- select * from vendecompra;
+-- delete from permuta where idpublicacion=4;
+-- delete from vendecompra where idvendepublicacion=:id;
+-- delete from subasta where idcomsubpublicacion=:id;
+-- delete from bajasuspencion where idbajapublicacion=:id;
+-- delete from publicacion where id=:id
+
+select count(*)
+from persona,usuario 
+where ciusuario=ci;
+
+select count(*)
+from persona,administrador 
+where ciadministrador=ci;
+
+select count(*)
+from persona,publicacion 
+where cipersona=ci;
+
+
+
+
+-- Suma todos los comentarios de todas las publicaciones
+select(select count(*)
+from persona,comentariopermuta
+where cicomperpersona=ci)+
+(select count(*)
+from persona,comentariopublicacion
+where cicompersona=ci)+
+(select count(*)
+from persona,comentariosubasta
+where cicomsubpersona=ci)+
+(select count(*)
+from persona,comentariovendecompra
+where cicomvenpersona=ci);
+
+select id,cipersona,nombrepubli,tipo,comentarioper from publicacion,comentariopermuta
+where nombrepubli like '%Caj%' and tipo = "permuta";
+
+select id,cipersona,nombrepubli,tipo,comentariopub from publicacion,comentariopublicacion
+where nombrepubli like '%Caj%' and tipo = "venta";
+
+select id,cipersona,nombrepubli,tipo,comentariosub from publicacion,comentariosubasta
+where nombrepubli like '%OF%' and tipo = "Subasta";
+
+select id,cipersona,nombrepubli,tipo,comentarioven from publicacion,comentariovendecompra
+where nombrepubli like '%S%' and tipo = "VENDE";
+
+SELECT id,cipersona,nombrepubli,tipo,comentariosub FROM publicacion,comentariosubasta
+WHERE nombrepubli = "OFERTON COLOMBIA HELADERA SIN USO!!" AND tipo = "Subasta";
+
+
+
+
+SELECT id,cipersona,nombrepubli,tipo,comentarioper,idcompermuta 
+FROM publicacion,comentariopermuta
+WHERE tipo="Permuta";
+
+-- Busca todos los comentarios de las permutas
+SELECT id,cipersona,nombrepubli,tipo,comentarioper,idcompermuta  FROM  publicacion
+inner join comentariopermuta
+on idcompermuta = id
+where comentarioper like '%G%';
+
+-- Busca los comentarios cuando la permuta es 1 (segun id)
+SELECT id,cipersona,nombrepubli,tipo,comentarioper,idcompermuta  FROM  publicacion
+inner join comentariopermuta
+on idcompermuta = id
+where id=1;
+
+-- Busca todos los comentarios de las subastas
+SELECT id,cipersona,nombrepubli,tipo,comentariosub,idcomsubpublicacion  FROM  publicacion
+INNER JOIN comentariosubasta ON idcomsubpublicacion = id
+WHERE comentariosub like '%o%';
+
+-- Busca los comentarios cuando la permuta es 3 (segun id)
+SELECT id,cipersona,nombrepubli,tipo,comentariosub,idcomsubpublicacion  FROM  publicacion
+INNER JOIN comentariosubasta 
+ON idcomsubpublicacion = id 
+WHERE id=3;
+
+-- Busca todos los comentarios de las ventaacompra
+SELECT id,cipersona,nombrepubli,tipo,comentarioven,idcomvenpublicacion  FROM  publicacion
+INNER JOIN comentariovendecompra ON idcomvenpublicacion = id
+WHERE comentarioven like '%o%';
+
+-- Busca los comentarios cuando la venta es 4 (segun id)
+SELECT id,cipersona,nombrepubli,tipo,comentarioven,idcomvenpublicacion  FROM  publicacion
+INNER JOIN comentariovendecompra 
+ON idcomvenpublicacion = id 
+WHERE id=4;
