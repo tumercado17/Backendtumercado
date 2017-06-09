@@ -355,3 +355,5 @@ SELECT id,cipersona,nombrepubli,tipo,comentarioven,idcomvenpublicacion  FROM  pu
 INNER JOIN comentariovendecompra 
 ON idcomvenpublicacion = id 
 WHERE id=4;
+
+SELECT * FROM publicacion WHERE id=3 and tipo="Subasta";

@@ -23,6 +23,7 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
      <form action="sancionadmin.php" id="FrmListadoUsuarios" method="POST">
      <section  id="services-sec">
        <div class="container">
+         <h1>Gestion de administradores</h1>
            <div class="row text-center">
              <table class="table">
                <tr>
@@ -79,10 +80,6 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
        </div>
      </form>
      </section>
-
-     <div id="footer">
-      2017 www.tumercado.com | Todos los derechos reservados
-     </div>
 
 	  <script src="assets/plugins/jquery-1.10.2.js"></script>
     <script src="assets/plugins/bootstrap.min.js"></script>

@@ -12,6 +12,7 @@ Require_once('../presentacion/menu.php');
   <body>
     <section  id="services-sec">
        <div class="container"  >
+         <h1>Administrar de usuarios</h1>
            <div class="row text-center">
              <table class="table">
                <tr>
@@ -86,13 +87,6 @@ Require_once('../presentacion/menu.php');
            </div>
        </div>
      </section>
-
-
-    <!--FOOTER SECTION -->
-    <div id="footer">
-      2017 www.tumercado.com | Todos los derechos reservados
-
-    </div>
 
 	  <script src="assets/plugins/jquery-1.10.2.js"></script>
     <script src="assets/plugins/bootstrap.min.js"></script>

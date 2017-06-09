@@ -36,6 +36,7 @@ for ($i=0;$i<count($resultados);$i++) {
     <section  id="services-sec">
          <form action="../logica/procesarmodiadmin.php" method="POST">
            <div class="container">
+             <h1>Modificar Administrador</h1>
              <form>
 
                  <div class="col-md-6 ">

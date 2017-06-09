@@ -14,7 +14,7 @@
     </script>
     <?php
   }
-  
+
   $conex=conectar();
   $ID = $_GET["ID"];
 
@@ -37,6 +37,7 @@
     <section  id="services-sec">
            <form action="../logica/procesarmodiusu.php" method="POST">
              <div class="container">
+               <h1>Modificar Usuario</h1>
                <form>
 
                    <div class="col-md-6 ">

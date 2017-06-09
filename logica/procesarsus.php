@@ -5,8 +5,8 @@ require_once('../logica/funciones.php');
 
 //$id = $_GET["ID"];
 $id= strip_tags(trim($_POST['id']));
-$san= strip_tags(trim($_POST['sancion']));
-$ci=strip_tags(trim($_POST['cipersona']));
+$san= strip_tags($_POST['sancion']);
+$ci=strip_tags($_POST['cipersona']);
 $fecha = date("Y-m-d"); //toma la fecha y la hora de la accion
 
 $conex = conectar();
@@ -15,7 +15,7 @@ $u= new Publicacion ($id,'','','','','','','',''); //la cantidad de elementos de
 $datos_s=$u->sanpubli($conex);
 
   if(!empty($datos_s)){
-    $conex=conectar();
+    $conex=conectar(); //Hacer el update y el insert segun tipo de publicacion
     // Si existe solo cambia el campo de suspencion
     $consultas = "update bajasuspencion set estado=:sancion, fecha=:fecha where idbajapublicacion=:id;";
     $result=$conex->prepare($consultas);
@@ -34,7 +34,7 @@ $datos_s=$u->sanpubli($conex);
           $conex=conectar();
           //Sino existe la sancion la ingresa a la tabla
           $consultas = "insert into bajasuspencion (cibajaadministrador,idbajapublicacion,estado,fecha)
-                              values (:ci,:id,:sancion,:fecha)";
+                              values (:ci,:id,:sancion,:fecha);";
           $result=$conex->prepare($consultas);
           $result->execute(array(':ci'=>$ci,':id'=>$id,':sancion'=>$san,':fecha'=>$fecha));
           $consulta=$result->fetchAll();

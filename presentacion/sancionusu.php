@@ -26,6 +26,7 @@ Require_once('../presentacion/menu.php');
               <form action="../logica/procesarsanusu.php" method="POST">
               <div class="container">
                   <div class="row text-center">
+                    <h1>Sancionar Usuario</h1>
                     <table class="table">
                       <tr>
                         <td>CI</td>

@@ -39,6 +39,7 @@ if ($_SESSION["GRADO"]=="Administrador del sistema"){
               <form action="../logica/procesarsanadmin.php" method="POST">
               <div class="container">
                   <div class="row text-center">
+                    <h1>Sancionar Administrador</h1>
                     <table class="table">
                       <tr>
                         <td>CI</td>

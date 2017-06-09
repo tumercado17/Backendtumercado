@@ -38,6 +38,7 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
               <form action="../logica/procesarborrarusu.php" method="POST">
               <div class="container">
                   <div class="row text-center">
+                    <h1>Borrar Usuario</h1>
                     <table class="table">
                       <tr>
                         <td>CI</td>
@@ -67,12 +68,8 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
             <input type="text" class="form-control" style="visibility:hidden" id="idusuario" name="idusuario" value='<?php echo $resultados[$i]["idusuario"];?>'>
             <button type="submit" class="btn btn-success" align="center">Borrar Usuario</button>
           </form>
-  <div id="footer">
-      2017 www.tumercado.com | Todos los derechos reservados
 
-    </div>
-
-	  <script src="assets/plugins/jquery-1.10.2.js"></script>
+    <script src="assets/plugins/jquery-1.10.2.js"></script>
     <script src="assets/plugins/bootstrap.min.js"></script>
     <script src="assets/plugins/jquery.isotope.min.js"></script>
     <script src="assets/plugins/jquery.prettyPhoto.js"></script>

@@ -19,7 +19,7 @@ $conex=conectar();
 $ID = $_GET["ID"];
 
 $consultas="select id,cipersona,nombre,apellido,email,nombrepubli,descripcion,categoria,stock,tipo
-            from publicacion,persona,permuta where cipersona=ci and id=$ID;";
+            from publicacion,persona,permuta where cipersona=ci and id=$ID group by $ID;";
 
 $result=$conex->prepare($consultas);
 $result->execute();
@@ -35,18 +35,19 @@ for ($i=0;$i<count($resultados);$i++) {
     <section  id="services-sec">
            <form action="../logica/procesarpublicacion.php" method="POST">
              <div class="container">
-               <form>
+               <h1>Modificar Publicacion</h1>
+              <form>
 
                    <div class="col-md-6 ">
                        <div class="form-group">
-                            Nombre de publicacion
+                            Nombre de publicacion:
                            <input type="text" class="form-control" id="nombrepubli" name="nombrepubli" value='<?php echo $resultados[$i]["nombrepubli"];?>'>
                        </div>
                    </div>
 
                    <div class="col-md-6 ">
                            <div class="form-group">
-                              Descripcion
+                              Descripcion:
                                <input type="text" class="form-control" id="descripcion" name="descripcion" value='<?php echo $resultados[$i]["descripcion"];?>'>
                            </div>
                        </div>
@@ -54,22 +55,28 @@ for ($i=0;$i<count($resultados);$i++) {
 
                    <div class="col-md-6 ">
                        <div class="form-group">
-                            Categoria
+                            Categoria:
                            <input type="text" class="form-control" id="categoria" name="categoria" value='<?php echo $resultados[$i]["categoria"];?>'>
                        </div>
                    </div>
 
                    <div class="col-md-6 ">
                        <div class="form-group">
-                            Stock
+                            Stock:
                            <input type="text" class="form-control" id="stock" name="stock" value='<?php echo $resultados[$i]["stock"];?>'>
                        </div>
                    </div>
 
-                   <div class="col-md-6 ">
-                       <div class="form-group">
-                            Tipo
-                           <input type="text" class="form-control" id="tipo" name="tipo" value=<?php echo $resultados[$i]["tipo"];?>>
+                   <div class="row">
+                       <div class="col-md-3 ">
+                           <div class="form-group">
+                             Tipo:
+                              <select class="form-control" id="tipo" name="tipo">
+                                <option value="Venta">Venta</option>
+                                <option value="Permuta">Permuta</option>
+                                <option value="Subasta">Subasta</option>
+                              </select>
+                           </div>
                        </div>
                    </div>
                              <input type="text" class="form-control" style="visibility:hidden" id="id" name="id" value='<?php echo $resultados[$i]["id"];?>'>

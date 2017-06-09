@@ -18,14 +18,13 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
 $conex=conectar();
 $ID = $_GET["ID"];
 
-$consultas="select id,cipersona,nombre,apellido,email,nombrepubli,precio,descripcion,categoria,stock,tipo
-            from publicacion,persona,permuta where cipersona=ci and id=$ID;";
+$consultas="SELECT id,cipersona,nombre,apellido,email,nombrepubli,precio,descripcion,categoria,stock,tipo,estado
+            FROM publicacion,persona,vendecompra,bajasuspencion
+            WHERE cipersona=ci and id=$ID GROUP BY estado;";
 
 $result=$conex->prepare($consultas);
 $result->execute();
 $resultados=$result->fetchAll();
-
-for ($i=0;$i<count($resultados);$i++) {
 
 ?>
 
@@ -36,6 +35,7 @@ for ($i=0;$i<count($resultados);$i++) {
     <section  id="services-sec">
               <form action="../logica/procesarsus.php" method="POST">
               <div class="container">
+                <h1>Sancionar Publicacion</h1>
                   <div class="row text-center">
                     <table class="table">
                       <tr>
@@ -50,7 +50,11 @@ for ($i=0;$i<count($resultados);$i++) {
                         <td>Categoria</td>
                         <td>Stock</td>
                         <td>Tipo</td>
+                        <td>Estado</td>
                        </tr>
+                       <?php
+                       for ($i=0;$i<count($resultados);$i++) {
+                         ?>
 
                         <tr>
                          <td><?php echo $resultados[$i]["id"];?></td>
@@ -64,7 +68,13 @@ for ($i=0;$i<count($resultados);$i++) {
                          <td><?php echo $resultados[$i]["categoria"];?></td>
                          <td><?php echo $resultados[$i]["stock"];?></td>
                          <td><?php echo $resultados[$i]["tipo"];?></td>
+                         <td><?php echo $resultados[$i]["estado"];?></td>
+                         <input type="text" style="visibility:hidden" id="id" name="id" value='<?php echo $resultados[$i]["id"];?>'>
+                         <input type="text" style="visibility:hidden" id="cipersona" name="cipersona" value='<?php echo $resultados[$i]["cipersona"];?>'>
                        </tr>
+                       <?php
+                     }
+                        ?>
 
                     </table>
                   </div>
@@ -81,14 +91,8 @@ for ($i=0;$i<count($resultados);$i++) {
                     </div>
                 </div>
             </div>
-            <input type="text" class="form-control" style="visibility:hidden" id="id" name="id" value='<?php echo $resultados[$i]["id"];?>'>
-            <input type="text" class="form-control" style="visibility:hidden" id="cipersona" name="cipersona" value='<?php echo $resultados[$i]["cipersona"];?>'>
             <button type="submit" class="btn btn-success" align="center">Aplicar Sancion</button>
           </form>
-  <div id="footer">
-      2017 www.tumercado.com | Todos los derechos reservados
-
-    </div>
 
 	  <script src="assets/plugins/jquery-1.10.2.js"></script>
     <script src="assets/plugins/bootstrap.min.js"></script>
@@ -98,6 +102,3 @@ for ($i=0;$i<count($resultados);$i++) {
 
 </body>
 </html>
-<?php
-}
- ?>

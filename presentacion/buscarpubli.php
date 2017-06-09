@@ -24,7 +24,8 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
 <html lang="en">
   <body>
     <section  id="services-sec">
-       <div class="container"  >
+       <div class="container">
+         <h1>Gestion de publicaciones</h1>
            <div class="row text-center">
              <table class="table">
                <tr>
@@ -97,11 +98,6 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
            </div>
        </div>
      </section>
-
-  <div id="footer">
-      2017 www.tumercado.com | Todos los derechos reservados
-
-    </div>
 
 	  <script src="assets/plugins/jquery-1.10.2.js"></script>
     <script src="assets/plugins/bootstrap.min.js"></script>

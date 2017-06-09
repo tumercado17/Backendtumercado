@@ -38,6 +38,7 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
               <form action="../logica/procesarborraradmin.php" method="POST">
               <div class="container">
                   <div class="row text-center">
+                    <h1>Borrar Administrador</h1>
                     <table class="table">
                       <tr>
                         <td>ID</td>

@@ -30,45 +30,64 @@ Require_once ('../logica/funciones.php');
 				}
 			}
 
+///////////////////////////////////////////////
+
 			function sancionpubli($obj,$conex){
 
 					//Primera funcion para ver si existe o no la publicacion en la tabla de la suspeciones
 		      $id = trim($obj->getid());
 					//CONSULTA SQL
-					$sql = "select * from bajasuspencion where idbajapublicacion=:id";
+					$sql = "select * from bajasuspencion where idbajapublicacion=:id;";
 
 					//VARIABLES PARA SQL "PREPARE" ES UNA FUNCION PDO, ES UNA FUNCION DEFINIDA
 					$result = $conex->prepare($sql);																			//DEFINIMOS LA CONSULTA, Y LA PREPARAMOS
 					$result->execute(array(':id'=>$id));
 					$consulta=$result->fetchAll();
+					return $consulta;
+					}
 
 
-					if($consulta){
-						return true;
-					}else{
-						return false;
+/////////////////////////////////////////////////////////////////////
+
+					function eliminar($obj,$conex){
+						$id = trim($obj->getid());
+						$tipo = $obj->gettipo();
+
+						if ($tipo == 'Venta'){
+
+						$sql = "SELECT * FROM publicacion WHERE id=:id AND tipo=:tipo;";
+
+						//VARIABLES PARA SQL "PREPARE" ES UNA FUNCION PDO, ES UNA FUNCION DEFINIDA
+						$result = $conex->prepare($sql);
+						$result->execute(array(':id'=>$id,':tipo'=>$tipo));
+						$consulta=$result->fetchAll();
+						return $consulta;
+
+
+						}elseif ($tipo == 'Permuta') {
+
+						$sql = "SELECT * FROM publicacion WHERE id=:id AND tipo=:tipo;";
+
+						//VARIABLES PARA SQL "PREPARE" ES UNA FUNCION PDO, ES UNA FUNCION DEFINIDA
+						$result = $conex->prepare($sql);
+						$result->execute(array(':id'=>$id,':tipo'=>$tipo));
+						$consulta=$result->fetchAll();
+						return $consulta;
+
+						}elseif ($tipo == 'Subasta'){
+
+						$sql = "SELECT * FROM publicacion WHERE id=:id AND tipo=:tipo;";
+
+						//VARIABLES PARA SQL "PREPARE" ES UNA FUNCION PDO, ES UNA FUNCION DEFINIDA
+						$result = $conex->prepare($sql);
+						$result->execute(array(':id'=>$id,':tipo'=>$tipo));
+						$consulta=$result->fetchAll();
+						return $consulta;
+
 						}
 					}
 
-					function eliminar($obj,$conex){
-
-						$id = trim($obj->getid());
-						//CONSULTA SQL
-						$sql = "select * from publicacion where id=:id";
-
-						//VARIABLES PARA SQL "PREPARE" ES UNA FUNCION PDO, ES UNA FUNCION DEFINIDA
-						$result = $conex->prepare($sql);																			//DEFINIMOS LA CONSULTA, Y LA PREPARAMOS
-						$result->execute(array(':id'=>$id));
-						$consulta=$result->fetchAll();
-
-
-						if($consulta){
-							return true;
-						}else{
-							return false;
-							}
-						}
-
+///////////////////////////////////////////////////////////////////////
 						public function buscarPubl($obj,$conex){ //consulta para realizar la busqueda de los comentarios de las publicaciones
 							$nombrepubli = $obj->getnombrepubli();
 							$tipo = $obj->gettipo();

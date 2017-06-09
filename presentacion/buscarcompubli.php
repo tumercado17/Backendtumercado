@@ -73,7 +73,7 @@ if(isset($_SESSION["BUS"])){
              <td>CIPersona</td>
              <td>Tipo</td>
              <td>Comentario</td>
-             <td>-------------</td>
+             <td>--</td>
             </tr>
 <?php
             for ($i=0;$i<count($array);$i++){
@@ -108,11 +108,11 @@ if(isset($_SESSION["BUS"])){
                 <?php
               }
               ?>
-              <td><a href="borrarpubli.php?ID=<?php echo $IDu;?>">Borrar</a></td>
+              <td><a href="borrarcompubli.php?ID=<?php echo $IDu;?>">Borrar</a></td>
              </tr>
              <?php
 
-           }
+           }$_SESSION["BUS"] = null; //Vuelve la busqueda a cero
               ?>
 
 
@@ -124,79 +124,6 @@ if(isset($_SESSION["BUS"])){
 
             }
           }
-
-                //Hace la conexion y la consulta para luego mostrar los datos de persona
-                /* $conex=conectar();
-                $sql ="select vendecompraid,id,cicomvenpersona,nombre,apellido,comentarioven,tipo,fechacomven
-                      from persona,comentariovendecompra,publicacion where cicomvenpersona=ci and id=idcomvenpublicacion
-                      order by vendecompraid;";
-
-                $result=$conex->prepare($sql);
-                $result->execute();
-                $resultados=$result->fetchAll();
-                //$sql=mysql_fetch_array($datos_u);
-        				for ($i=0;$i<count($resultados);$i++) {
-
-                $IDu=$resultados[$i]["vendecompraid"]; //tama el id de la tabla para enviarlo al otro formulario
-        				?>
-
-                 <tr>
-                  <td><?php echo $resultados[$i]["vendecompraid"];?></td>
-        					<td><?php echo $resultados[$i]["id"];?></td>
-        					<td><?php echo $resultados[$i]["cicomvenpersona"];?></td>
-        					<td><?php echo $resultados[$i]["nombre"];?></td>
-                  <td><?php echo $resultados[$i]["apellido"];?></td>
-                  <td><?php echo $resultados[$i]["comentarioven"];?></td>
-                  <td><?php echo $resultados[$i]["tipo"];?></td>
-                  <td><?php echo $resultados[$i]["fechacomven"];?></td>
-                  <td><a href="borrarpubli.php?ID=<?php echo $IDu;?>">Borrar</a></td>
-                </tr>
-
-                <?php
-              }
-                 ?>
-             </table>
-           </div>
-       </div>
-     </section>
-
-     echo $_SESSION["BUS"];
-     if(isset($_SESSION["BUS"])){
-       if(!empty($_SESSION["BUS"])){
-         	 $array=$_SESSION["BUS"];
-           $val = count($array);
-           echo '<section  id="services-sec">';
-              echo '<div class="container"  >';
-                 echo '<div class="row text-center">';
-                   echo  '<table class="table">';
-                     echo '<tr>';
-                       echo '<td>Nombre</td>';
-                       echo '<td>Categoría</td>';
-                       echo '<td>Stock</td>';
-                       echo '<td>Fecha</td>';
-                       echo '<td>Precio</td>';
-                       echo '<td>Tipo</td>';
-                       echo '<td>Vendedor</td>';
-                     echo '</tr>';
-           for ($i = 0; $i < $val; $i ++){
-                       echo '<tr>';
-                         echo '<td>' . $array[$i]["id"] . '</td>';
-                         echo '<td>' . $array[$i]["cipersona"] . '</td>';
-                         echo '<td>' . $array[$i]['stock'] . '</td>';
-                         echo '<td>' . $array[$i]['fecha'] . '</td>';
-                         echo '<td>' . $array[$i]['precio'] . '</td>';
-                         echo '<td>' . $array[$i]['tipo'] . '</td>';
-                         echo '<td>' . $array[$i]['nombre'] . '</td>';
-                       echo '</tr>';
-           }
-
-                     echo '</table>';
-                   echo '</div>';
-               echo '</div>';
-             echo '</section>';
-       }
-     }
-     */
 ?>
     <script src="assets/plugins/jquery-1.10.2.js"></script>
     <script src="assets/plugins/bootstrap.min.js"></script>
