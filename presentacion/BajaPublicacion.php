@@ -9,7 +9,7 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
   ?>
   <script type="text/javascript">
     window.alert ("¡No tiene los permisos necesarios <?php echo $_SESSION["LOGIN"];?>!\n Solo los administradores del sistema acceden aqui!!");
-    location.href="../presentacion/menu.php";
+    location.href="../presentacion/estadisticas.php";
   </script>
   <?php
 }

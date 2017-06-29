@@ -15,15 +15,36 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
   </script>
   <?php
 }
+ ?>
 
-?>
 <!DOCTYPE html>
-
 <html lang="en">
-     <form action="sancionadmin.php" id="FrmListadoUsuarios" method="POST">
+<head>
+<meta charset="utf-8">
+<title>Tumercado-Inicio</title>
+<body>
+	<!-- end header -->
+	<section id="banner">
+
+	</section>
+	<section id="call-to-action-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-sm-9">
+					<h3>Gestion de administradores</h3>
+					<p>Aquí puede realizar las distintas opciones para los administradores registrados en el sitio</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  	<section id="content">
+
+    <div class="container content">
+  		<div class="row">
+        <form action="sancionadmin.php" id="FrmListadoUsuarios" method="POST">
      <section  id="services-sec">
        <div class="container">
-         <h1>Gestion de administradores</h1>
            <div class="row text-center">
              <table class="table">
                <tr>
@@ -39,9 +60,7 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
                  <td>Grado</td>
                  <td>-</td>
                  <td>-</td>
-                 <td>-</td>
 								</tr>
-
                 <?php
 
                 //Hace la conexion y la consulta para luego mostrar los datos de persona
@@ -68,24 +87,60 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
                   <td><?php echo $resultados[$i]["telefono"];?></td>
                   <td><?php echo $resultados[$i]["grado"];?></td>
                   <td><a href="modificaradmin.php?ID=<?php echo $IDu;?>">Modificar</a></td>
-                  <td><a href="sancionadmin.php?ID=<?php echo $IDu;?>">Sancionar</a></td>
                   <td><a href="borraradmin.php?ID=<?php echo $IDu;?>">Borrar</a></td>
                   </tr>
 
                 <?php
               }
                  ?>
-             </table>
+                </table>
            </div>
        </div>
      </form>
-     </section>
 
-	  <script src="assets/plugins/jquery-1.10.2.js"></script>
-    <script src="assets/plugins/bootstrap.min.js"></script>
-    <script src="assets/plugins/jquery.isotope.min.js"></script>
-    <script src="assets/plugins/jquery.prettyPhoto.js"></script>
-    <script src="assets/js/custom.js"></script>
+     <form action="../presentacion/Registrarse.php" method="POST">
+       <div class="form-group">
+           <button type="submit" class="btn btn-success">Crear Administrador</button>
+       </div>
+     </form>
 
+      <!-- sdasdasdasd -->
+  		</div>
+  	</div>
+
+	<footer>
+
+	<div id="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="copyright">
+						<p>
+							<span>&copy; Tumercado.com 2017 All right reserved. SkyCloudDevelopement </span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</footer>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery.easing.1.3.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.fancybox.pack.js"></script>
+<script src="assets/js/jquery.fancybox-media.js"></script>
+<script src="assets/js/jquery.flexslider.js"></script>
+<script src="assets/js/animate.js"></script>
+<!-- Vendor Scripts -->
+<script src="assets/js/modernizr.custom.js"></script>
+<script src="assets/js/jquery.isotope.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/animate.js"></script>
+<script src="assets/js/custom.js"></script>
 </body>
 </html>

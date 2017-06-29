@@ -3,66 +3,81 @@ session_start();
 $_SESSION["PHPSESSID"]=session_id();
 
  ?>
-﻿<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="utf-8">
+ <title>Idex-Tumercado-</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <meta name="description" content="" />
+ <meta name="author" content="http://webthemez.com" />
+ <!-- css -->
+ <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="assets/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+ <link href="assets/css/flexslider.css" rel="stylesheet" />
+ <link href="assets/css/style.css" rel="stylesheet" />
 
-   <title>Login-Tumercado-</title>
+ </head>
+ <body>
+ <div id="wrapper">
 
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="assets/css/font-awesome-animation.css" rel="stylesheet" />
-    <link href="assets/css/prettyPhoto.css" rel="stylesheet" />
-    <link href="assets/css/style.css" rel="stylesheet" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  </head>
-<body>
-    <img src="../imagenes/logoadmin.png" width="200 " height="200"/>
-    <section  id="services-sec">
-      <div class="navbar-collapse collapse">
-      <h1>-TUMERCADO BACKEND-LOGIN DE ADMINISTRADOR</h1>
-      </div>
+ 	<section id="inner-headline">
+ 	<div class="container">
+ 		<div class="row">
+ 			<div class="col-lg-12">
+ 				<h2 class="pageTitle">Bienvenidos -TuMercado.com Backend-</h2>
+ 			</div>
+ 		</div>
+ 	</div>
+ 	</section>
 
-        <div class="container">
-          <form action="../logica/procesarlogin.php" method="POST">
-              <div class="row">
-                  <div class="col-md-6 ">
-                      <div class="form-group">
-                          Nombre de usuario
-                          <input type="text" id="nombre" name="nombre" class="form-control" required="required" placeholder="Nombre">
-                      </div>
-                  </div>
+ 	<section id="content">
+
+ 	<div class="container">
+
+ 	<div class="row">
+ 			<div class="col-md-6">
+ 		    <form action="../logica/procesarlogin.php" method="POST">
+
+         	 <div class="control-group">
+             <div class="controls">
+               Nombre de usuario:
+                  <input type="text" id="nombre" name="nombre" class="form-control" required="required" placeholder="Nombre">
+ 			              <p class="help-block"></p>
+ 		          </div>
+ 	         </div>
+
+           <div class="control-group">
+             <div class="controls">
+               Contraseña:
+                  <input type="Password" id="contrasena" name="contrasena" class="form-control" required="required" placeholder="Password">
+                    <p class="help-block"></p>
               </div>
-              <div class="row">
-                  <div class="col-md-6 ">
-                      <div class="form-group">
-                          Contraseña
-                          <input type="Password" id="contrasena" name="contrasena" class="form-control" required="required" placeholder="Password">
-                      </div>
-                      <div class="form-group">
-                          <button type="submit" class="btn btn-success">Ingresar</button>
-                          <a href="index.php">
-                      </div>
-                  </div>
-              </div>
-          </form>
-        </div>
-    </section>
+           </div>
 
-    <div id="footer">
-      2017 www.tumercado.com | Todos los derechos reservados
+ 	     <div id="success"> </div>
+ 	          <button type="submit" class="btn btn-primary pull-right">Ingresar</button><br />
+           </form>
+ 								</div>
+					</div>
+ 	</div>
 
-    </div>
+ 	</section>
+ 	</div>
 
-    <script src="assets/plugins/jquery-1.10.2.js"></script>
-    <script src="assets/plugins/bootstrap.min.js"></script>
-    <script src="assets/plugins/jquery.isotope.min.js"></script>
-    <script src="assets/plugins/jquery.prettyPhoto.js"></script>
-    <script src="assets/js/custom.js"></script>
+ <script src="assets/js/jquery.js"></script>
+ <script src="assets/js/jquery.easing.1.3.js"></script>
+ <script src="assets/js/bootstrap.min.js"></script>
+ <script src="assets/js/jquery.fancybox.pack.js"></script>
+ <script src="assets/js/jquery.fancybox-media.js"></script>
+ <script src="assets/js/jquery.flexslider.js"></script>
+ <script src="assets/js/animate.js"></script>
+ <!-- Vendor Scripts -->
+ <script src="assets/js/modernizr.custom.js"></script>
+ <script src="assets/js/jquery.isotope.min.js"></script>
+ <script src="assets/js/jquery.magnific-popup.min.js"></script>
+ <script src="assets/js/animate.js"></script>
+ <script src="assets/js/custom.js"></script>
 
-</body>
-</html>
+ </body>
+ </html>

@@ -13,13 +13,12 @@ $cont=strip_tags(trim($_POST['contrasena']));
 $email=strip_tags(trim($_POST['email']));
 $calle=strip_tags(trim($_POST['calle']));
 $num=strip_tags(trim($_POST['numero']));
-$tarj=strip_tags(trim($_POST['tarjeta']));
 $tel=strip_tags(trim($_POST['telefono']));
 $grado=strip_tags(trim($_POST['grado']));
 $pais=strip_tags(trim($_POST['pais']));
 
 $conex = conectar();
-$u= new Persona ($ci,$nom,$ape,$email,$pais,$tarj,'',$calle,$num,'',$cont); //la cantidad de elementos de la clase persona
+$u= new Persona ($ci,$nom,$ape,$email,$pais,'','',$calle,$num,'',$cont); //la cantidad de elementos de la clase persona
 $o= new administrador ('',$ci,$grado); //la cantidad de elementos de la clase administrador
 $p= new telefonoper ($ci,$tel); //agrega el telefono seleccionado
 
@@ -32,7 +31,7 @@ $datos_t=$p->agregartel($conex);
     ?>
     <script type="text/javascript">
     window.alert("El Usuario a sido ingresado.");
-    location.href="../presentacion/menu.php";
+    location.href="../presentacion/buscar.php";
     </script>
 
 

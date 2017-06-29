@@ -41,6 +41,15 @@ $datos_t=$t->borrar($conex);
       $result->execute(array(':id'=>$id));
       $consulta=$result->fetchAll();
 
+    }elseif ($tipo == 'Publicacion'){
+
+      $conex=conectar();
+      $consultas = "DELETE FROM comentariopublicacion WHERE idcompublicacion=:id;";
+
+      $result=$conex->prepare($consultas);
+      $result->execute(array(':id'=>$id));
+      $consulta=$result->fetchAll();
+
     }
 
     ?>

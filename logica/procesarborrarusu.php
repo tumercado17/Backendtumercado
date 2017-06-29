@@ -6,7 +6,6 @@ $ci= strip_tags(trim($_POST['ci']));
 $id= strip_tags(trim($_POST['idusuario']));
 $fecha = date("Y-m-d"); //toma la fecha y la hora de la accion
 
-echo $id;
 $conex = conectar();
 
 $u= new Persona ($ci,'','','','','','','',''); //la cantidad de elementos de la clase
@@ -18,8 +17,11 @@ $datos_s=$u->mostrarunaper($conex);
 
     // Si existe solo cambia el campo de suspencion
     $consultas = "delete from telefonopersona where cipersona=:ci;
-                  delete from nombreusuario where idusuario=:id;
+                  delete from nombreusuario where idusuario=:ci;
                   delete from usuario where ciusuario=:ci;
+                  delete from subasta where cisubpersona=:ci;
+                  delete from comentariosubasta where cicomsubpersona=:ci;
+                  delete from sansiona where ciusuariosan=:ci;
                   delete from persona where ci=:ci;";
 
     $result=$conex->prepare($consultas);
@@ -29,7 +31,7 @@ $datos_s=$u->mostrarunaper($conex);
     ?>
     <script type="text/javascript">
     window.alert("Se aplicaron cambios correctamente.");
-    //location.href="../presentacion/buscarusu.php";
+    location.href="../presentacion/buscarusu.php";
     </script>
     <?php
 

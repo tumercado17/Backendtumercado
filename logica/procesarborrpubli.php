@@ -31,7 +31,7 @@ if(!empty($datos_t)){
     $conex=conectar();
     $consultas = "DELETE FROM comentariopermuta WHERE idcompermuta=:id;
                   DELETE FROM permuta WHERE idpublicacion=:id;
-                  DELETE FROM publicacion WHERE id=:id;   ";
+                  DELETE FROM publicacion WHERE id=:id;";
 
     $result=$conex->prepare($consultas);
     $result->execute(array(':id'=>$id));
@@ -42,7 +42,17 @@ if(!empty($datos_t)){
     $conex=conectar();
     $consultas = "DELETE FROM comentariosubasta WHERE idcomsubpublicacion=:id;
                   DELETE FROM subasta WHERE idsubpublicacion=:id;
-                  DELETE FROM publicacion WHERE id=:id;  ";
+                  DELETE FROM publicacion WHERE id=:id;";
+
+    $result=$conex->prepare($consultas);
+    $result->execute(array(':id'=>$id));
+    $consulta=$result->fetchAll();
+
+  }elseif ($tipo == 'Publicacion'){
+
+    $conex=conectar();
+    $consultas = "DELETE FROM comentariopublicacion WHERE idcompublicacion=:id;
+                  DELETE FROM publicacion WHERE id=:id;";
 
     $result=$conex->prepare($consultas);
     $result->execute(array(':id'=>$id));

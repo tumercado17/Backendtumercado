@@ -1,26 +1,51 @@
 <?php
-require_once("../logica/sesiones.php");
-?>
-﻿<!DOCTYPE html>
-<html lang="en">
-    <head>
-      <link href="assets/css/bootstrap.css" rel="stylesheet" />
-      <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
-      <link href="assets/css/font-awesome-animation.css" rel="stylesheet" />
-      <link href="assets/css/prettyPhoto.css" rel="stylesheet" />
-      <link href="assets/css/style.css" rel="stylesheet" />
-      <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    </head>
-<body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-        <img src="../imagenes/logoadmin.png" width="90" height="90"/>
-        <a href="estadisticas.php">TUMERCADO</a>
-        <a href="estadisticas.php" align="center"> Ver perfil: <?php echo $_SESSION["nombre"];?></a>
-        <div class="container">
 
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-center">
-                  <li><?php if ($_SESSION["GRADO"]=="Administrador del sistema"){
+$hora= date ("h:i:s");
+$fecha= date ("j/n/Y");
+ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tumercado-Inicio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="http://webthemez.com" />
+
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="assets/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="assets/css/flexslider.css" rel="stylesheet" />
+<link href="assets/css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+<div id="wrapper" class="home-page">
+<div class="topbar">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="pull-left hidden-xs"><i class="fa fa-clock-o"></i><span><?php echo $fecha; ?></span></p>
+        <a href="Perfil.php"><p class="pull-right">Perfil: <?php echo $_SESSION["nombre"]; echo " " . $_SESSION["apellido"];?></p></a>
+      </div>
+    </div>
+  </div>
+</div>
+	<!-- start header -->
+	<header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="estadisticas.php"><img src="assets/img/logoadmin.png" alt="logo"/></a> <!-- Poner el logo del sistema -->
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="estadisticas.php">Home</a></li>
+                        <li><?php if ($_SESSION["GRADO"]=="Administrador del sistema"){
                     ?>
                     <a href="Buscar.php">Gestion de Administradores</a></li>
                     <?php
@@ -33,13 +58,7 @@ require_once("../logica/sesiones.php");
                     <?php
                   }
                     ?>
-                  <li><?php if ($_SESSION["GRADO"]=="Administrador del sistema"){
-                    ?>
-                    <a href="Registrarse.php">Crear Administrador</a></li>
-                    <?php
-                  }
-                    ?>
-                    <li><a href="../reportes/listadoUsuarios.php">CREAR-PDF</a></li>
+
                     <li><?php if ($_SESSION["GRADO"]=="Administrador del sistema"){
                       ?>
                       <a href="buscarcompubli.php">Administrar Comentarios</a></li>
@@ -52,19 +71,12 @@ require_once("../logica/sesiones.php");
                       <?php
                     }
                       ?>
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+	</header>
 
-    <section  id="services-sec">
-    </section>
-
-    <script src="assets/plugins/jquery-1.10.2.js"></script>
-    <script src="assets/plugins/bootstrap.min.js"></script>
-    <script src="assets/plugins/jquery.isotope.min.js"></script>
-    <script src="assets/plugins/jquery.prettyPhoto.js"></script>
-    <script src="assets/js/custom.js"></script>
 
 </body>
 </html>

@@ -84,22 +84,33 @@ Require_once ('../logica/funciones.php');
 						$consulta=$result->fetchAll();
 						return $consulta;
 
+					}elseif ($tipo == 'Publicacion'){
+
+						$sql = "SELECT * FROM publicacion WHERE id=:id AND tipo=:tipo;";
+
+						//VARIABLES PARA SQL "PREPARE" ES UNA FUNCION PDO, ES UNA FUNCION DEFINIDA
+						$result = $conex->prepare($sql);
+						$result->execute(array(':id'=>$id,':tipo'=>$tipo));
+						$consulta=$result->fetchAll();
+						return $consulta;
+
 						}
 					}
 
 ///////////////////////////////////////////////////////////////////////
 						public function buscarPubl($obj,$conex){ //consulta para realizar la busqueda de los comentarios de las publicaciones
+							$id = trim($obj->getid());
 							$nombrepubli = $obj->getnombrepubli();
 							$tipo = $obj->gettipo();
 
 							if ($tipo == 'Venta'){
 							$sql = "SELECT id,cipersona,nombrepubli,tipo,comentarioven,idcomvenpublicacion  FROM  publicacion
 											INNER JOIN comentariovendecompra ON idcomvenpublicacion = id
-											WHERE comentarioven LIKE concat('%', :nombrepubli, '%');";
+											WHERE nombrepubli LIKE concat('%', :nombrepubli, '%') AND idcomvenpublicacion=:id;";
 
 							//VARIABLES PARA SQL "PREPARE" ES UNA FUNCION PDO, ES UNA FUNCION DEFINIDA
 							$result = $conex->prepare($sql);																			//DEFINIMOS LA CONSULTA, Y LA PREPARAMOS
-							$result->execute(array(':nombrepubli'=>$nombrepubli));
+							$result->execute(array(':nombrepubli'=>$nombrepubli, ':id'=>$id));
 							$consulta=$result->fetchAll();
 							return $consulta;
 
@@ -125,6 +136,16 @@ Require_once ('../logica/funciones.php');
 							$consulta=$result->fetchAll();
 							return $consulta;
 
+						}elseif ($tipo == 'Publicacion'){
+							$sql = "SELECT id,cipersona,nombrepubli,tipo,comentariopub,idcompublicacion  FROM  publicacion
+											INNER JOIN comentariopublicacion ON idcompublicacion = id
+											WHERE nombrepubli LIKE concat('%', :nombrepubli, '%') AND idcompublicacion=:id;";
+
+							//VARIABLES PARA SQL "PREPARE" ES UNA FUNCION PDO, ES UNA FUNCION DEFINIDA
+							$result = $conex->prepare($sql);																			//DEFINIMOS LA CONSULTA, Y LA PREPARAMOS
+							$result->execute(array(':nombrepubli'=>$nombrepubli, ':id'=>$id));
+							$consulta=$result->fetchAll();
+							return $consulta;
 						}
 					}
 

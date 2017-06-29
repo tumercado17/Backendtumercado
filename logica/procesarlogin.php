@@ -39,6 +39,7 @@ $datos_u=$u->loginper($conex);
 		$_SESSION["GRADO"] = $IDu;
     $_SESSION["ci"] = $datos_u[0]["ci"];
 		$_SESSION["LOGIN"] = $datos_u[0]["nombre"];
+		$_SESSION["apellido"] = $datos_u[0]["apellido"];
 
 		?>
     <script type="text/javascript">

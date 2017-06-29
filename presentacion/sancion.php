@@ -1,6 +1,6 @@
 <?php
-Require_once("../logica/funciones.php");
-require_once("../logica/sesiones.php");
+Require_once('../logica/funciones.php');
+Require_once('../logica/sesiones.php');
 Require_once('../presentacion/menu.php');
 
 if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Administrador de frontend"){
@@ -27,18 +27,47 @@ $result->execute();
 $resultados=$result->fetchAll();
 
 ?>
-
 <!DOCTYPE html>
-
 <html lang="en">
-  <body>
-    <section  id="services-sec">
-              <form action="../logica/procesarsus.php" method="POST">
-              <div class="container">
-                <h1>Sancionar Publicacion</h1>
-                  <div class="row text-center">
-                    <table class="table">
-                      <tr>
+<head>
+<meta charset="utf-8">
+<title>Tumercado-Inicio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="http://webthemez.com" />
+
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="css/flexslider.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+
+  <section id="banner">
+
+  </section>
+  <section id="call-to-action-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-sm-9">
+          <h3>Sancionar Publicacion </h3>
+          <p>Seleccione la sancion establecida para la publicacion</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section id="content">
+
+    <div class="container content">
+      <div class="row">
+        <form action="../logica/procesarsus.php" method="POST">
+     <section  id="services-sec">
+       <div class="container">
+           <div class="row text-center">
+             <table class="table">
+               <tr>
                         <td>IDPublicacion</td>
                         <td>CI</td>
                         <td>Nombre</td>
@@ -77,28 +106,60 @@ $resultados=$result->fetchAll();
                         ?>
 
                     </table>
-                  </div>
-              </div>
-            </section>
-
-            <div class="row">
-                <div class="col-md-3 ">
-                    <div class="form-group">
-                       <select class="form-control" id="sancion" name="sancion">
-                         <option value="Suspendido por 2 transacciones">Aplicar suspencion de calificacion</option>
-                         <option value="Sin suspencion">Quitar suspencion de calificacion</option>
-                       </select>
+                    <div class="control-group">
+                      <div class="controls">
+                        <select class="form-control" id="sancion" name="sancion">
+                          <option value="Suspendido por 2 transacciones">Aplicar suspencion de calificacion</option>
+                          <option value="Sin suspencion">Quitar suspencion de calificacion</option>
+                         </select>
+                         <p class="help-block"></p>
+                       </div>
                     </div>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-success" align="center">Aplicar Sancion</button>
-          </form>
 
-	  <script src="assets/plugins/jquery-1.10.2.js"></script>
-    <script src="assets/plugins/bootstrap.min.js"></script>
-    <script src="assets/plugins/jquery.isotope.min.js"></script>
-    <script src="assets/plugins/jquery.prettyPhoto.js"></script>
-    <script src="assets/js/custom.js"></script>
+              </div>
+          </div>
+        </section>
 
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Aplicar Sancion</button>
+        </div>
+      </form>
+    </div>
+</div>
+
+<footer>
+
+<div id="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="copyright">
+          <p>
+            <span>&copy; Tumercado.com 2017 All right reserved. SkyCloudDevelopement </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</footer>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+  ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery.easing.1.3.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.fancybox.pack.js"></script>
+<script src="assets/js/jquery.fancybox-media.js"></script>
+<script src="assets/js/jquery.flexslider.js"></script>
+<script src="assets/js/animate.js"></script>
+<!-- Vendor Scripts -->
+<script src="assets/js/modernizr.custom.js"></script>
+<script src="assets/js/jquery.isotope.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/animate.js"></script>
+<script src="assets/js/custom.js"></script>
 </body>
 </html>

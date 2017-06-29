@@ -3,7 +3,7 @@ Require_once('../clases/persona.php');
 Require_once('../clases/usuario.class.php');
 Require_once('../clases/publicacion.php');
 Require_once('../logica/funciones.php');
-require_once('../logica/sesiones.php');
+Require_once('../logica/sesiones.php');
 Require_once('../presentacion/menu.php');
 
 if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Administrador de frontend"){
@@ -18,32 +18,54 @@ if ($_SESSION["GRADO"]=="Administrador del sistema" or $_SESSION["GRADO"]=="Admi
   <?php
 }
 ?>
-
 <!DOCTYPE html>
-
 <html lang="en">
-  <body>
+<head>
+<meta charset="utf-8">
+<title>Tumercado-Inicio</title>
+<body>
+	<!-- end header -->
+  <section id="banner">
 
-    <section  id="services-sec">
+  <section id="call-to-action-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-sm-9">
+          <h3>Administrar los comentarios de publicacion</h3>
+          <p>Listado de todos los comentarios de una publicacion determinada</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="content">
+  <section  id="services-sec">
        <div class="container">
          <form action="../logica/procesarBusqueda.php" method="POST">
-           <div class="row text-center">
-             <h1>Administrar comentarios de usuarios</h1>
-
-             <div class="row">
+           <div class="row ext-center">
+               <div class="row">
                  <div class="col-md-3 ">
                      <div class="form-group">
                          Busqueda:
                          <input type="text" id="nombre" name="nombre" class="form-control" required="required" placeholder="Nombre  de publicacion">
                      </div>
                  </div>
-             </div>
 
-             <div class="row">
+
+                 <div class="col-md-3 ">
+                     <div class="form-group">
+                         ID de publicacion:
+                         <input type="number" min="1" max="1000" id="id" name="id" class="form-control" required="required" placeholder="ID de publicacion">
+                     </div>
+                 </div>
+
+
+
                  <div class="col-md-3 ">
                      <div class="form-group">
                        Tipo de publicacion
                         <select class="form-control" id="tipo" name="tipo" placeholder="Pais">
+                          <option value="Publicacion">Publicacion</option>
                           <option value="Venta">Venta</option>
                           <option value="Permuta">Permuta</option>
                           <option value="Subasta">Subasta</option>
@@ -63,13 +85,15 @@ if(isset($_SESSION["BUS"])){
   if(!empty($_SESSION["BUS"])){
     $array=$_SESSION["BUS"];
 ?>
-<section  id="services-sec">
-   <div class="container">
-       <div class="row text-center">
-         <table class="table">
+<section id="content">
+<div class="container content">
+  <div class="row">
+      <div class="container">
+         <div class="row text-center">
+           <table class="table">
            <tr>
              <td>ID</td>
-             <td>Nombre publicacion</td>
+             <td>Nombre Publicacion</td>
              <td>CIPersona</td>
              <td>Tipo</td>
              <td>Comentario</td>
@@ -93,7 +117,7 @@ if(isset($_SESSION["BUS"])){
                <?php
              }
              ?>
-            </tr>
+
               <?php
               if ($tipo == "Venta"){
                 ?>
@@ -108,6 +132,13 @@ if(isset($_SESSION["BUS"])){
                 <?php
               }
               ?>
+              <?php
+              if ($tipo == "Publicacion"){
+                ?>
+                <td><?php echo $array[$i]["comentariopub"];?></td>
+                <?php
+              }
+              ?>
               <td><a href="borrarcompubli.php?ID=<?php echo $IDu;?>">Borrar</a></td>
              </tr>
              <?php
@@ -116,20 +147,50 @@ if(isset($_SESSION["BUS"])){
               ?>
 
 
-        </table>
+          </table>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
                 <?php
 
             }
           }
 ?>
-    <script src="assets/plugins/jquery-1.10.2.js"></script>
-    <script src="assets/plugins/bootstrap.min.js"></script>
-    <script src="assets/plugins/jquery.isotope.min.js"></script>
-    <script src="assets/plugins/jquery.prettyPhoto.js"></script>
-    <script src="assets/js/custom.js"></script>
 
+	<footer>
+
+	<div id="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="copyright">
+						<p>
+							<span>&copy; Tumercado.com 2017 All right reserved. SkyCloudDevelopement </span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</footer>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery.easing.1.3.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.fancybox.pack.js"></script>
+<script src="assets/js/jquery.fancybox-media.js"></script>
+<script src="assets/js/jquery.flexslider.js"></script>
+<script src="assets/js/animate.js"></script>
+<!-- Vendor Scripts -->
+<script src="assets/js/modernizr.custom.js"></script>
+<script src="assets/js/jquery.isotope.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/animate.js"></script>
+<script src="assets/js/custom.js"></script>
 </body>
 </html>

@@ -1,3 +1,0 @@
-Realizar sanitizacion de los campos.
-PDF's restantes.
-Sancionar administradores y publicaciones (esta incompleto, falta mejorar la busqueda y realizarla por tipo de publicacion)

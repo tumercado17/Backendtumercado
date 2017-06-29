@@ -1,6 +1,6 @@
 <?php
-Require_once("../logica/funciones.php");
-require_once("../logica/sesiones.php");
+Require_once('../logica/funciones.php');
+Require_once('../logica/sesiones.php');
 Require_once('../presentacion/menu.php');
 
 if ($_SESSION["GRADO"]=="Administrador del sistema"){
@@ -27,94 +27,155 @@ $result->execute();
 $resultados=$result->fetchAll();
 
 for ($i=0;$i<count($resultados);$i++) {
+
 ?>
 
 <!DOCTYPE html>
-
 <html lang="en">
-  <body>
-    <section  id="services-sec">
-         <form action="../logica/procesarmodiadmin.php" method="POST">
-           <div class="container">
-             <h1>Modificar Administrador</h1>
-             <form>
+<head>
+<meta charset="utf-8">
+<title>Tumercado-Inicio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="http://webthemez.com" />
 
-                 <div class="col-md-6 ">
-                     <div class="form-group">
-                          Nombre
-                         <input type="text" class="form-control" id="nombre" name="nombre" value='<?php echo $resultados[$i]["nombre"];?>'>
-                     </div>
-                 </div>
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="css/flexslider.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
 
-                 <div class="row">
-                     <div class="col-md-6 ">
-                         <div class="form-group">
-                             Apellido
-                             <input type="text" class="form-control" id="apellido" name="apellido" value='<?php echo $resultados[$i]["apellido"];?>'>
-                         </div>
-                     </div>
+</head>
+<body>
 
-                     <div class="row">
-                         <div class="col-md-6 ">
-                             <div class="form-group">
-                                 contraseña
-                                 <input type="password" class="form-control" id="contrasena" name="contrasena" value='<?php echo $resultados[$i]["contrasena"];?>'>
-                             </div>
-                         </div>
+	<section id="banner">
 
-                     <div class="col-md-6 ">
-                         <div class="form-group">
-                            Correo electronico
-                             <input type="text" class="form-control" id="email" name="email" value='<?php echo $resultados[$i]["email"];?>'>
-                         </div>
-                     </div>
-                 </div>
+	</section>
+	<section id="call-to-action-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-sm-9">
+					<h3>Modificar administrador "<?php echo $resultados[$i]["nombre"]; echo " " . $resultados[$i]["apellido"];?>"</h3>
+					<p>Sustituya los campos correspondientes para poder actualizarlo los datos de "<?php echo $resultados[$i]["nombre"]; echo " " . $resultados[$i]["apellido"];?>"</p>
+				</div>
+			</div>
+		</div>
+	</section>
 
-                 <div class="col-md-6 ">
-                     <div class="form-group">
-                          Calle
-                         <input type="text" class="form-control" id="calle" name="calle" value='<?php echo $resultados[$i]["calle"];?>'>
-                     </div>
-                 </div>
+  <section id="content">
 
-                 <div class="col-md-6 ">
-                     <div class="form-group">
-                          Numero
-                         <input type="text" class="form-control" id="numero" name="numero" value='<?php echo $resultados[$i]["numero"];?>'>
-                     </div>
-                 </div>
+  <div class="container">
 
-                 <div class="row">
-                     <div class="col-md-3 ">
-                         <div class="form-group">
-                           Grado
-                            <select class="form-control" id="grado" name="grado" required="required" placeholder="Grado">
-                              <option value="Penalizador">Penalizador</option>
-                              <option value="Administrador del sistema">Administrador del sistema</option>
-                              <option value="Administrador de frontend">Administrador de frontend</option>
-                              <option value="Lector de registro">Lector de registro</option>
-                            </select>
-                         </div>
-                     </div>
-                 </div>
+  <div class="row">
+      <div class="col-md-6">
 
-                <input type="text" class="form-control" style="visibility:hidden" id="ci" name="ci" value='<?php echo $resultados[$i]["ci"];?>'>
-                <button type="submit" class="btn btn-success">Modificar</button>
+        <form action="../logica/procesarmodiadmin.php" method="POST">
 
-             </form>
+           <div class="control-group">
+             <div class="controls">
+               Nombre de usuario:
+                  <input type="text" class="form-control" id="nombre" name="nombre" value='<?php echo $resultados[$i]["nombre"];?>'>
+                    <p class="help-block"></p>
+              </div>
            </div>
-       </section>
 
-<div id="footer">
-    2017 www.tumercado.com | Todos los derechos reservados
+           <div class="control-group">
+             <div class="controls">
+               Apellido:
+                  <input type="text" class="form-control" id="apellido" name="apellido" value='<?php echo $resultados[$i]["apellido"];?>'>
+                    <p class="help-block"></p>
+              </div>
+           </div>
 
+           <div class="control-group">
+             <div class="controls">
+               Contraseña:
+                  <input type="password" class="form-control" id="contrasena" name="contrasena" value='<?php echo $resultados[$i]["contrasena"];?>'>
+                    <p class="help-block"></p>
+              </div>
+           </div>
+
+           <div class="control-group">
+             <div class="controls">
+               Correo Electronico:
+                  <input type="text" class="form-control" id="email" name="email" value='<?php echo $resultados[$i]["email"];?>'>
+                    <p class="help-block"></p>
+              </div>
+           </div>
+
+           <div class="control-group">
+             <div class="controls">
+               Calle:
+                  <input type="text" class="form-control" id="calle" name="calle" value='<?php echo $resultados[$i]["calle"];?>'>
+                    <p class="help-block"></p>
+              </div>
+           </div>
+
+           <div class="control-group">
+             <div class="controls">
+               Numero:
+                  <input type="text" class="form-control" id="numero" name="numero" value='<?php echo $resultados[$i]["numero"];?>'>
+                    <p class="help-block"></p>
+              </div>
+           </div>
+
+           <div class="control-group">
+             <div class="controls">
+               Grado:
+               <select class="form-control" id="grado" name="grado" required="required" placeholder="Grado">
+                       <option value="Penalizador">Penalizador</option>
+                       <option value="Administrador del sistema">Administrador del sistema</option>
+                       <option value="Administrador de frontend">Administrador de frontend</option>
+                       <option value="Lector de registro">Lector de registro</option>
+                </select>
+                <p class="help-block"></p>
+              </div>
+           </div>
+
+       <input type="text" class="form-control" style="visibility:hidden" id="ci" name="ci" value='<?php echo $resultados[$i]["ci"];?>'>
+       <div id="success"> </div>
+            <button type="submit" class="btn btn-primary pull-right">Modificar</button><br />
+           </form>
+                </div>
+          </div>
   </div>
 
-  <script src="assets/plugins/jquery-1.10.2.js"></script>
-  <script src="assets/plugins/bootstrap.min.js"></script>
-  <script src="assets/plugins/jquery.isotope.min.js"></script>
-  <script src="assets/plugins/jquery.prettyPhoto.js"></script>
-  <script src="assets/js/custom.js"></script>
+  </section>
+
+
+
+	<footer>
+
+	<div id="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="copyright">
+						<p>
+							<span>&copy; Tumercado.com 2017 All right reserved. SkyCloudDevelopement </span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</footer>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery.easing.1.3.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.fancybox.pack.js"></script>
+<script src="assets/js/jquery.fancybox-media.js"></script>
+<script src="assets/js/jquery.flexslider.js"></script>
+<script src="assets/js/animate.js"></script>
+<!-- Vendor Scripts -->
+<script src="assets/js/modernizr.custom.js"></script>
+<script src="assets/js/jquery.isotope.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/animate.js"></script>
+<script src="assets/js/custom.js"></script>
 
 </body>
 </html>

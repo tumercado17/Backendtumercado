@@ -22,7 +22,7 @@ $datos_s=$u->mostrarunaper($conex);
 
   if(!empty($datos_s)){
     $conex=conectar();
-
+    
     // Si existe solo cambia el campo de suspencion
     $consultas = "update persona set nombre=:nombre, apellido=:apellido, email=:email, contrasena=:contrasena,
                 calle=:calle, numero=:numero, calificacion=:calificacion where ci=:ci;";

@@ -31,17 +31,48 @@ if ($_SESSION["GRADO"]=="Administrador del sistema"){
 
   ?>
 
-<!DOCTYPE html>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>Tumercado-Inicio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="http://webthemez.com" />
 
-<html lang="en">
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
+  <link href="css/flexslider.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+
+  </head>
   <body>
-    <section  id="services-sec">
-              <form action="../logica/procesarsanadmin.php" method="POST">
-              <div class="container">
-                  <div class="row text-center">
-                    <h1>Sancionar Administrador</h1>
-                    <table class="table">
-                      <tr>
+
+  	<section id="banner">
+
+  	</section>
+  	<section id="call-to-action-2">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-md-10 col-sm-9">
+  					<h3>Sancionar administrador</h3>
+  					<p>Aquí puede realizar las distintas opciones para los usuarios registrados en el sitio</p>
+  				</div>
+  			</div>
+  		</div>
+  	</section>
+
+    	<section id="content">
+
+      <div class="container content">
+    		<div class="row">
+          <form action="../logica/procesarsanadmin.php" method="POST">
+       <section  id="services-sec">
+         <div class="container">
+           <h1>Gestion de usuarios</h1>
+             <div class="row text-center">
+               <table class="table">
+                 <tr>
                         <td>CI</td>
                         <td>Nombre</td>
                         <td>Apellido</td>
@@ -55,39 +86,65 @@ if ($_SESSION["GRADO"]=="Administrador del sistema"){
                          <td><?php echo $resultados[$i]["apellido"];?></td>
                          <td><?php echo $resultados[$i]["email"];?></td>
                          <td><?php echo $resultados[$i]["grado"];?></td>
-                         </tr>
+                        </tr>
+                      </table>
 
-                    </table>
-                  </div>
-              </div>
-            </section>
+                      <div class="control-group">
+                        <div class="controls">
+                          <select class="form-control" id="sancion" name="sancion" required="required">
+                            <option value="No realiza transacciones">Prohibir realizar transacciones</option>
+                            <option value="Sin suspencion">Quitar suspencion</option>
+                           </select>
+                           <p class="help-block"></p>
+                         </div>
+                      </div>
 
-            <div class="row">
-                <div class="col-md-3 ">
-                    <div class="form-group">
-                       <select class="form-control" id="sancion" name="sancion">
-                         <option value="No realiza transacciones">Prohibir realizar transacciones</option>
-                         <option value="Sin suspencion">Quitar suspencion</option>
-                       </select>
-                    </div>
                 </div>
             </div>
-            <input type="text" class="form-control" style="visibility:hidden" id="ci" name="ci" value='<?php echo $resultados[$i]["ci"];?>'>
-            <button type="submit" class="btn btn-success" align="center">Aplicar Sancion</button>
-          </form>
-  <div id="footer">
-      2017 www.tumercado.com | Todos los derechos reservados
-
-    </div>
-
-	  <script src="assets/plugins/jquery-1.10.2.js"></script>
-    <script src="assets/plugins/bootstrap.min.js"></script>
-    <script src="assets/plugins/jquery.isotope.min.js"></script>
-    <script src="assets/plugins/jquery.prettyPhoto.js"></script>
-    <script src="assets/js/custom.js"></script>
-
-</body>
-</html>
-<?php
+          </section>
+          <input type="text" class="form-control" style="visibility:hidden" id="ci" name="ci" value='<?php echo $resultados[$i]["ci"];?>'>
+          <div class="form-group">
+              <button type="submit" class="btn btn-success">Sancionar</button>
+          </div>
+        </form>
+      </div>
+  </div>
+  <?php
 }
  ?>
+  <footer>
+
+  <div id="sub-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="copyright">
+            <p>
+              <span>&copy; Tumercado.com 2017 All right reserved. SkyCloudDevelopement </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </footer>
+  </div>
+  <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+  <!-- javascript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/jquery.easing.1.3.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery.fancybox.pack.js"></script>
+  <script src="assets/js/jquery.fancybox-media.js"></script>
+  <script src="assets/js/jquery.flexslider.js"></script>
+  <script src="assets/js/animate.js"></script>
+  <!-- Vendor Scripts -->
+  <script src="assets/js/modernizr.custom.js"></script>
+  <script src="assets/js/jquery.isotope.min.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/animate.js"></script>
+  <script src="assets/js/custom.js"></script>
+  </body>
+  </html>
